@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Welcome to Jekyll!"
+title:  "상속"
 ---
 
 상속이란? : C#의 특징 중 하나로, 부모 클래스의 내용을 재사용, 확장, 수정하는 기능이다
