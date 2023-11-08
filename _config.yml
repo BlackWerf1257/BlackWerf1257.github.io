@@ -73,7 +73,7 @@ theme_mode: dark # [light|dark]
 img_cdn:
 
 # the avatar on sidebar, support local or CORS resources
-avatar: 'https://img.freepik.com/free-photo/ultra-detailed-nebula-abstract-wallpaper-4_1562-749.jpg?w=740&t=st=1699270962~exp=1699271562~hmac=8d268f6f7671bfb05a9890d6eb0e3ba3a505179da8c41c7bc9ae92d2f3e65eec'
+avatar: 'https://freepngimg.com/thumb/universe/174612-galaxy-space-free-png-hq.png'
 
 # boolean type, the global switch for TOC in posts.
 toc: true
