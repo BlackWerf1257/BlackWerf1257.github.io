@@ -1,6 +1,0 @@
-	
-
-User-agent: *
-Allow: /
-
-Sitemap: https://BlackWerf1257.github.io/sitemap.xml
