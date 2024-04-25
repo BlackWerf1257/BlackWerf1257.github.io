@@ -4,16 +4,16 @@
 
 layout:
   post: 포스트
-  category: 카테고리
-  tag: 태그
+  category: カテゴリ
+  tag: タグ
 
 # The tabs of sidebar
 tabs:
   # format: <filename_without_extension>: <value>
   home: 
   projects: プロジェクト
-  categories: 카테고리
-  tags: 태그
+  categories: カテゴリ
+  tags: タグ
   archives: 아카이브
   about: 정보
 
@@ -81,5 +81,5 @@ df:
 
 # categories page
 categories:
-  category_measure: 카테고리
+  category_measure: カテゴリ
   post_measure: 포스트
