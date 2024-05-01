@@ -31,21 +31,15 @@ order: 5
 - Visual Basic
 - PHP
 
-<br>
-
 ### Back-End
 
 - MySQL
 - MSSQL
 - Photon Engine
 
-<br>
-
 ### OS
 
 - Ubuntu Server
-
-<br>
 
 ### Tools
 
@@ -54,8 +48,6 @@ order: 5
 - Rider
 - Visual Studio
 - Visual Code
-
-<br>
 
 ### Mark-Up
 
