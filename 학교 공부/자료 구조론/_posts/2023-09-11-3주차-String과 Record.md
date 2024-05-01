@@ -197,7 +197,7 @@ tags: [23-2, 자료구조론]
 
 - 예시) S="DATASTRUCT"
 
-  <img src="D:\BlackWerf1257.github.io\assets\img\DS\2nd\Linked_List.png" />
+  ![Image Alt 텍스트]({{link}}/assets/img/DS/3nd/Linked_List.png )
 
 ##### 가변길이 String
 
