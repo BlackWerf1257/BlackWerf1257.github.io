@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "자료 구조론 3주차"
+title:  "자료 구조론 3주차 - String과 Record 그리고 알고리즘"
 tags: [23-2, 자료구조론]
 ---
 
