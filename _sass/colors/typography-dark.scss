@@ -2,15 +2,15 @@
  * The main dark mode styles
  */
 
-@mixin dark-scheme {
+ @mixin dark-scheme {
   /* Framework color */
   --main-bg: rgb(27, 27, 30);
   --mask-bg: rgb(68, 69, 70);
   --main-border-color: rgb(44, 45, 45);
 
   /* Common color */
-  --text-color: rgb(175, 176, 177);
-  --text-muted-color: #868686;
+  --text-color: rgb(177, 177, 177);
+  --text-muted-color: #838383;
   --text-muted-hightlight-color: #aeaeae;
   --heading-color: #cccccc;
   --label-color: #a7a7a7;
@@ -35,15 +35,15 @@
   );
 
   /* Sidebar */
-  --site-title-color: #717070;
-  --site-subtitle-color: #868686;
+  --site-title-color: #ebe9e9;
+  --site-subtitle-color: #efecec;
   --sidebar-bg: #1e1e1e;
   --sidebar-border-color: #292929;
-  --sidebar-muted-color: #868686;
-  --sidebar-active-color: rgb(255, 255, 255, 0.95);
-  --sidebar-hover-bg: #262626;
+  --sidebar-muted-color: #ffffff;
+  --sidebar-active-color: rgba(0, 0, 0, 0.95);
+  --sidebar-hover-bg: #a8bbff;
   --sidebar-btn-bg: #232328;
-  --sidebar-btn-color: #787878;
+  --sidebar-btn-color: #000000;
   --avatar-border-color: rgb(206, 206, 206, 0.9);
 
   /* Topbar */
@@ -102,6 +102,10 @@
 
   .light {
     display: none;
+  }
+
+  hr {
+    border-color: var(--main-border-color);
   }
 
   /* categories */
