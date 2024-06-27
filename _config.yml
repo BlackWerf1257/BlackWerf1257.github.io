@@ -1,4 +1,6 @@
 # The Site Configuration
+include:
+ - _javascript
 
 # Import the theme
 theme: jekyll-theme-chirpy
@@ -38,8 +40,8 @@ social:
   email: mklsjh44@gmail.com # change to your email address
   links:
     # The first element serves as the copyright owner's link
-    #- https://twitter.com/username # change to your twitter homepage
-    - https://github.com/BlackWerf1257 # change to your github homepage
+    - https://twitter.com/username # change to your twitter homepage
+    - https://github.com/username # change to your github homepage
     # Uncomment below to add more social links
     # - https://www.facebook.com/username
     # - https://www.linkedin.com/in/username
@@ -192,6 +194,3 @@ jekyll-archives:
   permalinks:
     tag: /tags/:name/
     category: /categories/:name/
-
-    include:
- - _javascript
