@@ -1,4 +1,6 @@
 # The Site Configuration
+include:
+ - _javascript
 
 # Import the theme
 theme: jekyll-theme-chirpy
@@ -192,7 +194,3 @@ jekyll-archives:
   permalinks:
     tag: /tags/:name/
     category: /categories/:name/
-
-
-include:
- - _javascript
