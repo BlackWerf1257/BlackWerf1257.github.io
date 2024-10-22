@@ -6,20 +6,23 @@ order: 5
 
 ## 학력
 
-   백석대학교 첨단IT 학부 AR/VR전공 재학 중(2021.3~)
+- 백석대학교 첨단IT 학부 AR/VR전공 재학 중(2021.3~)
 
- <br/>
-   백석대학교 혁신융합 학부 글로벌 IT 전공 재학 중(2023.3~)
+
 
 ## 수상경력
 
-   2021.11.26 전공능력경진대회 **금상**
+- 2021.11.26 전공능력경진대회 **금상**
+
+- 2024.06.28 2024 창업발명공모전 장려상
+
+<br>
 
 ## 프로젝트 참여 경험
 
-   2023.1~ : Cullinan 프로젝트
+   2023.1~ 2024.10 : Cullinan 프로젝트
 
-
+<br>
 
 ## Skill
 
@@ -35,11 +38,14 @@ order: 5
 
 - MySQL
 - MSSQL
-- Photon Engine
+- SQLite
+- Django
+- Spring
 
-### OS
+### Engine
 
-- Ubuntu Server
+- Unity
+- Unreal
 
 ### Tools
 
