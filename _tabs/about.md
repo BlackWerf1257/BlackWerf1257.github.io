@@ -22,6 +22,14 @@ order: 5
 
    2023.1~ 2024.10 : Strayer 프로젝트
 
+<button onclick="window.location='{{ site.baseurl }}/projects/_pages/Strayer.html'" style="padding:10px 10px; background-color:white; color:black; border:none; border-radius:5px; cursor:pointer;">자세히 보기</button>
+
+<br>
+
+## 자격증
+
+<button onclick="window.location='{{ site.baseurl }}/licenses/_pages/License.html'" style="padding:10px 10px; background-color:white; color:black; border:none; border-radius:5px; cursor:pointer;">취득한 자격증</button>
+
 <br>
 
 ## Skill
