@@ -96,7 +96,7 @@ theme_mode: light # [light | dark]
 # will be added to all media resources (site avatar, posts' images, audio and video files) paths starting with '/'
 #
 # e.g. 'https://cdn.com'
-cdn: "https://chirpy-img.netlify.app"
+cdn: "localhost:4000"
 
 # the avatar on sidebar, support local or CORS resources
 avatar: 'https://freepngimg.com/thumb/universe/174612-galaxy-space-free-png-hq.png'
@@ -151,7 +151,7 @@ pwa:
 paginate: 10
 
 # The base URL of your site
-baseurl: "/BlackWerf1257.github.io"
+baseurl: ""
 
 # ------------ The following options are not recommended to be modified ------------------
 
