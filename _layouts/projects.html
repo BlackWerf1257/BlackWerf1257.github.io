@@ -1,0 +1,28 @@
+---
+layout: page
+icon: fas fa-code-branch
+order: 4
+title: Projects
+---
+
+<div class="project-list">
+  {% for post in site.projects %}
+    <div class="project-card" style="margin-bottom: 20px; border: 1px solid #ddd; padding: 15px; border-radius: 8px;">
+      <h3>
+        <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+      </h3>
+      <p style="color: #666; font-size: 0.9em;">
+        {{ post.date | date: "%Y-%m-%d" }}
+      </p>
+      {% if post.description %}
+        <p>{{ post.description }}</p>
+      {% else %}
+        <p>{{ post.excerpt | strip_html | truncate: 100 }}</p>
+      {% endif %}
+    </div>
+  {% endfor %}
+</div>
+
+{% if site.projects.size == 0 %}
+  <p>아직 등록된 프로젝트가 없습니다.</p>
+{% endif %}
