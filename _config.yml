@@ -197,6 +197,12 @@ defaults:
     values:
       layout: page
       permalink: /:title/
+  - scope:
+      path: ""
+      type: projects
+    values:
+      layout: page  # 또는 적절한 레이아웃
+      permalink: /projects/:title/    
 
 sass:
   style: compressed
@@ -229,3 +235,6 @@ jekyll-archives:
   permalinks:
     tag: /tags/:name/
     category: /categories/:name/
+
+
+cache_version: v1.0.1
