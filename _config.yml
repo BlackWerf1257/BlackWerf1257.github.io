@@ -63,7 +63,7 @@ analytics:
   google: 
     id: G-QBG6GYWR6S # fill in your Google Analytics ID
   goatcounter:
-    id: blackwerf1257 # fill in your GoatCounter ID
+    id: # fill in your GoatCounter ID
   umami:
     id: # fill in your Umami ID
     domain: # fill in your Umami domain
@@ -100,7 +100,7 @@ theme_mode:  # [light | dark]
 cdn:
 
 # the avatar on sidebar, support local or CORS resources
-avatar: './assets/img/title-img.png'
+avatar: 'https://freepngimg.com/thumb/universe/174612-galaxy-space-free-png-hq.png'
 
 # The URL of the site-wide social preview image used in SEO `og:image` meta tag.
 # It can be overridden by a customized `page.image` in front matter.
@@ -152,7 +152,7 @@ pwa:
 paginate: 10
 
 # The base URL of your site
-baseurl:
+baseurl: ""
 
 # ------------ The following options are not recommended to be modified ------------------
 
