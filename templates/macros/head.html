@@ -169,7 +169,7 @@
             {# Default Pretendard font with font-display swap for better performance #}
             @font-face {
                 font-family: "Pretendard-Regular";
-                src: url('{{ get_url(path="fonts/Pretendard-Regular.woff") | safe }}') format("woff");
+                src: url('{{ get_url(path="css/fonts/Pretendard-Regular.woff") | safe }}') format("woff");
                 font-weight: 400;
                 font-style: normal;
                 font-display: swap;
@@ -310,7 +310,7 @@
     <link rel="stylesheet" href="{{ get_url(path="css/font-awesome.min.css") | safe }}">
 
     <!-- Preload critical fonts -->
-    <link rel="preload" href="{{ get_url(path="fonts/Pretendard-Regular.woff") | safe }}" as="font" type="font/woff" crossorigin>
+    <link rel="preload" href="{{ get_url(path="css/fonts/Pretendard-Regular.woff") | safe }}" as="font" type="font/woff" crossorigin>
 
     <!--  Global Config to pass to different JS scripts  -->
     <script>
