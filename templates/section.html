@@ -22,14 +22,22 @@
             {% endif %}
 
             {# Feed icon #}
-            {# 1. Get all categories used in the site #}
-            {% set categories = get_taxonomy(kind="categories", lang=lang) %}
+            {# 1. Get all categories used in the site (only if taxonomy is configured) #}
+            {% set has_categories_taxonomy = false %}
+            {% for tax in config.taxonomies %}
+                {% if tax.name == "categories" %}
+                    {% set_global has_categories_taxonomy = true %}
+                {% endif %}
+            {% endfor %}
+            {% if has_categories_taxonomy %}
+                {% set categories = get_taxonomy(kind="categories", lang=lang) %}
+            {% endif %}
             {% set feed_filename = config.feed_filenames | first | default(value="atom.xml") %}
             {% set category_has_feed = false %}
             {% set feed_url = "" %}
 
             {# 2. Check if the current section title exists in the categories list #}
-            {% if categories %}
+            {% if has_categories_taxonomy and categories %}
                 {% for term in categories.items %}
                     {# Check Match: Title OR Custom Slug in [extra] #}
                     {% if term.name | lower == section.title | lower or (section.extra.slug is defined and term.slug == section.extra.slug) %}

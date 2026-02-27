@@ -26,6 +26,13 @@
             </button>
     </div>
 
+    {% set has_categories_taxonomy = false %}
+    {% for tax in config.taxonomies %}
+        {% if tax.name == "categories" %}
+            {% set_global has_categories_taxonomy = true %}
+        {% endif %}
+    {% endfor %}
+    {% if has_categories_taxonomy %}
     <h3 class="text-xl font-bold mt-8 mb-4">{{ utils::trans_or_default(key="category_feeds", default="Category Feeds", lang=lang, config=config, config_file=config_file) }}</h3>
     <div class="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2 2xl:grid-cols-3">
         {% set categories = get_taxonomy(kind="categories", lang=lang) %}
@@ -40,5 +47,6 @@
             </div>
         {% endfor %}
     </div>
+    {% endif %}
 </div>
 {% endblock content %}

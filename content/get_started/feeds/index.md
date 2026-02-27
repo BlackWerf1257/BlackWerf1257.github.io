@@ -10,6 +10,8 @@ taxonomies = { tags = ["goyo", "feeds", "zola", "setup"], categories = ["guide"]
 
 This theme supports automatic Atom feed generation for global content and specific categories. This guide explains how to configure taxonomies to separate "subscriptions" (Feeds) from "search terms" (Tags), and how to enable the UI elements.
 
+> **Note:** The feeds system requires the `categories` taxonomy to be configured. If your site does not define a `categories` taxonomy, the category-related feed features will be automatically skipped without causing build errors.
+
 ## 1. Taxonomy Configuration
 
 In your `config.toml`, you can define which taxonomies should generate feeds. A common pattern is to use **Categories** for subscriptions (RSS, Atom) and **Tags** for internal search only.
@@ -21,6 +23,17 @@ generate_feeds = true
 
 # Tags: Used for internal search index, but no feed is generated
 # Categories: Generates feeds (atom.xml) for subscribers
+taxonomies = [
+    { name = "tags", feed = false },
+    { name = "categories", paginate_by = 10, feed = true },
+]
+```
+
+For multilingual sites, repeat the taxonomy configuration under each language:
+
+```toml
+[languages.ko]
+generate_feeds = true
 taxonomies = [
     { name = "tags", feed = false },
     { name = "categories", paginate_by = 10, feed = true },

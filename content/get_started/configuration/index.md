@@ -11,6 +11,29 @@ toc_expand = true
 
 Configure Goyo theme in `config.toml`.
 
+## Taxonomies (Optional)
+
+Goyo supports **categories** and **tags** taxonomies for organizing content. These are **optional** — the theme works without them. If you want to use feed subscriptions per category or tag-based navigation, add the following to your `config.toml`:
+
+```toml
+taxonomies = [
+    { name = "tags", feed = false },
+    { name = "categories", paginate_by = 10, feed = true },
+]
+```
+
+For multilingual sites, repeat this under each language section:
+
+```toml
+[languages.ko]
+taxonomies = [
+    { name = "tags", feed = false },
+    { name = "categories", paginate_by = 10, feed = true },
+]
+```
+
+> **Note:** If you do not define taxonomies, features that depend on them (such as category feeds and the feeds page) will be automatically disabled. No build errors will occur.
+
 ## Design & Branding
 
 ### Logo

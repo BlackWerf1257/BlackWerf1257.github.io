@@ -11,6 +11,29 @@ toc_expand = true
 
 `config.toml`에서 Goyo 테마를 설정합니다.
 
+## 택소노미 (선택사항)
+
+Goyo는 콘텐츠 분류를 위한 **categories**와 **tags** 택소노미를 지원합니다. 이 설정은 **선택사항**이며 — 택소노미 없이도 테마는 정상 동작합니다. 카테고리별 피드 구독이나 태그 기반 네비게이션을 사용하려면 `config.toml`에 다음을 추가하세요:
+
+```toml
+taxonomies = [
+    { name = "tags", feed = false },
+    { name = "categories", paginate_by = 10, feed = true },
+]
+```
+
+다국어 사이트의 경우, 각 언어 섹션에 동일하게 설정합니다:
+
+```toml
+[languages.ko]
+taxonomies = [
+    { name = "tags", feed = false },
+    { name = "categories", paginate_by = 10, feed = true },
+]
+```
+
+> **참고:** 택소노미를 정의하지 않으면 이에 의존하는 기능(카테고리 피드, 피드 페이지 등)이 자동으로 비활성화됩니다. 빌드 오류는 발생하지 않습니다.
+
 ## 디자인 & 브랜딩
 
 ### 로고
