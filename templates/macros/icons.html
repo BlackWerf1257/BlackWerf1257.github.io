@@ -1,6 +1,9 @@
 {% macro icon(name, class="") %}
 {% set file = "static/icons/" ~ name ~ ".svg" %}
+{% set svg_data = load_data(path=file, required=false) %}
+{% if svg_data %}
 <span class="icon {{ class }}" aria-hidden="true">
-    {{ load_data(path=file) | safe }}
+    {{ svg_data | safe }}
   </span>
+{% endif %}
 {% endmacro %}
