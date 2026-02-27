@@ -182,6 +182,7 @@
                 {% set configured_light_theme = 'goyo-light' %}
             {% endif %}
             window.GOYO_CONFIG = {
+                ...window.GOYO_CONFIG,
                 defaultThemeDark: "{{ configured_dark_theme }}",
                 defaultThemeLight: "{{ configured_light_theme }}",
             };
