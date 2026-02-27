@@ -1,28 +1,32 @@
 {% macro trans_or_default(key, default, lang, config, config_file=false) -%}
     {%- set effective_lang = lang | default(value=config.default_language | default(value="en")) -%}
 
-    {# 1- Zola i18n (languages.xx.translations) #}
-    {%- set text = trans(key=key, lang=effective_lang) -%}
-    {# if translation exists returns it otherwise it returns the key itself #}
-    {%- if text != key -%}
-        {{ text }}
-    {%- else -%}
-        {# 2- Theme fallback: root [translations] loaded from config file (often default language) #}
-        {%- set loaded_config = config_file -%}
+    {# Load config data to safely check if translation keys exist before calling trans() #}
+    {%- set loaded_config = config_file -%}
+    {%- if not loaded_config -%}
+        {%- set loaded_config = load_data(path="/config.toml", format="toml", required=false) -%}
         {%- if not loaded_config -%}
-            {%- set loaded_config = load_data(path="/config.toml", format="toml", required=false) -%}
-            {%- if not loaded_config -%}
-                {%- set loaded_config = load_data(path="/config.yaml", format="yaml", required=false) -%}
-            {%- endif -%}
-            {%- if not loaded_config -%}
-                {%- set loaded_config = load_data(path="/config.yml", format="yaml", required=false) -%}
-            {%- endif -%}
+            {%- set loaded_config = load_data(path="/config.yaml", format="yaml", required=false) -%}
         {%- endif -%}
+        {%- if not loaded_config -%}
+            {%- set loaded_config = load_data(path="/config.yml", format="yaml", required=false) -%}
+        {%- endif -%}
+    {%- endif -%}
 
-        {%- if loaded_config and loaded_config.translations and loaded_config.translations[key] -%}
-            {{ loaded_config.translations[key] }}
-        {%- else -%}
-            {{ default }}
+    {# Check if translation key exists in config before calling trans() #}
+    {%- set has_key = false -%}
+    {%- if loaded_config -%}
+        {%- if effective_lang != config.default_language and loaded_config.languages and loaded_config.languages[effective_lang] and loaded_config.languages[effective_lang].translations and loaded_config.languages[effective_lang].translations[key] -%}
+            {%- set has_key = true -%}
         {%- endif -%}
+        {%- if not has_key and loaded_config.translations and loaded_config.translations[key] -%}
+            {%- set has_key = true -%}
+        {%- endif -%}
+    {%- endif -%}
+
+    {%- if has_key -%}
+        {{ trans(key=key, lang=effective_lang) }}
+    {%- else -%}
+        {{ default }}
     {%- endif -%}
 {%- endmacro %}
