@@ -1,18 +1,24 @@
-on: push
 name: Build and deploy GH Pages
+on:
+  push:
+    branches:
+      - main  # 메인 브랜치 이름 확인
+
 jobs:
   build:
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/main'
+    # 권한 오류를 방지하기 위해 쓰기 권한을 명시적으로 부여합니다.
+    permissions:
+      contents: write
     steps:
       - name: checkout
         uses: actions/checkout@v4
+
       - name: build_and_deploy
         uses: shalzz/zola-deploy-action@master
         env:
-          # Target branch
+          # 대상 브랜치
           PAGES_BRANCH: gh-pages
-          # Provide personal access token
-          TOKEN: ${{ secrets.TOKEN }}
-          # Or if publishing to the same repo, use the automatic token
-          #TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # 별도의 시크릿 생성 없이 기본 제공되는 토큰을 사용합니다.
+          TOKEN: ${{ secrets.GITHUB_TOKEN }}
