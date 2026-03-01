@@ -177,8 +177,8 @@ light_image_path = "images/goyo-light.webp" # Logo for light theme (optional)
 # You can use either the new [extra.twitter] format or the legacy flat format (twitter_site, twitter_creator)
 # The new format takes priority when both are present
 [extra.twitter]
-site = "@hahwul"     # Site Twitter handle
-creator = "@hahwul"  # Creator Twitter handle
+site = ""     # Site Twitter handle
+creator = ""  # Creator Twitter handle
 
 # Theme Configuration (new structured format)
 # You can use either the new [extra.theme] format or the legacy flat format (default_colorset, brightness, disable_theme_toggle)
