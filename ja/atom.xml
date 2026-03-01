@@ -1,0 +1,753 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="ja">
+    <title>BlackWerf 開発ブログ</title>
+    <subtitle>プログラミング資料のアーカイブ</subtitle>
+    <link rel="self" type="application/atom+xml" href="https://BlackWerf1257.github.io/ja/atom.xml"/>
+    <link rel="alternate" type="text/html" href="https://BlackWerf1257.github.io/"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2025-07-10T00:00:00+00:00</updated>
+    <id>https://BlackWerf1257.github.io/ja/atom.xml</id>
+    <entry xml:lang="ja">
+        <title>React - 非同期と同期</title>
+        <published>2025-07-10T00:00:00+00:00</published>
+        <updated>2025-07-10T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://BlackWerf1257.github.io/ja/React/bidonggiwa-donggihwa/"/>
+        <id>https://BlackWerf1257.github.io/ja/React/bidonggiwa-donggihwa/</id>
+        
+        <content type="html" xml:base="https://BlackWerf1257.github.io/ja/React/bidonggiwa-donggihwa/">&lt;h2 id=&quot;fei-tong-qi-totong-qi&quot;&gt;非同期と同期&lt;&#x2F;h2&gt;
+&lt;h3 id=&quot;gai-nian&quot;&gt;概念&lt;&#x2F;h3&gt;
+&lt;p&gt;動機&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;サーバーで作業が終了するのを待ってから、次の作業を実行する方式の通信 -- コードを簡単に記述できるが、複数の作業が同時に実行される場合、性能低下の欠点がある&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;非同期&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;リクエスト送信後、応答を待たずに次の処理を実行する通信方式&lt;br&gt; - 商品リストの取得やダウンロード処理などが例として挙げられる&lt;br&gt; - 複数の処理を同時に処理する場合や並列処理に適している&lt;br&gt; - 全体の処理性能を向上させることができる&lt;br&gt; - JavaScriptではpromiseがよく使用される&lt;br&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h3 id=&quot;fei-tong-qi-nozhong-lei&quot;&gt;非同期の種類&lt;&#x2F;h3&gt;
+&lt;p&gt;Ajax&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;A&lt;&#x2F;strong&gt;synchronous &lt;strong&gt;J&lt;&#x2F;strong&gt;avascript &lt;strong&gt;A&lt;&#x2F;strong&gt;nd &lt;strong&gt;X&lt;&#x2F;strong&gt;MLの略称で、JavaScriptを用いて非同期方式でサーバーから必要なデータを取得し、ページ上で変更が必要な部分のみを更新する技術- 主な目的は画面の切り替えなしにクライアントとサーバー間で情報を交換することである&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h5 id=&quot;chang-suo&quot;&gt;長所&lt;&#x2F;h5&gt;
+&lt;ul&gt;
+&lt;li&gt;ページ更新なしでサーバーとクライアント間の非同期通信を実現可能- 速度面で性能改善が可能- 別途プラグインが不要- HTTP転送中でもウェブアプリとの相互操作が可能&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h4 id=&quot;akusiosu&quot;&gt;アクシオス&lt;&#x2F;h4&gt;
+&lt;ul&gt;
+&lt;li&gt;ブラウザ、Node.js向けのPromise APIを使用したHTTP方式の非同期通信ライブラリ&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h5 id=&quot;te-zheng&quot;&gt;特徴&lt;&#x2F;h5&gt;
+&lt;ul&gt;
+&lt;li&gt;環境に応じて、ブラウザの&lt;strong&gt;XMLHttpRequest&lt;&#x2F;strong&gt;やNode.jsの&lt;strong&gt;Http API&lt;&#x2F;strong&gt;を使用する- Promise APIを使用する- HTTPのリクエスト&#x2F;レスポンスをJSON形式に自動的に変換する- リクエストのキャンセルやタイムアウトの設定が可能である- Fetchに比べてより多くの機能を備えている&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h5 id=&quot;fetchtonobi-jiao&quot;&gt;Fetchとの比較&lt;&#x2F;h5&gt;
+&lt;p&gt;フェッチ&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;組み込みライブラリであるため、importなしで利用可能 - サポートしていないブラウザが存在する - Promiseを返却し、JSONに変換する必要がある - ネットワーク障害／リクエストが完了しなかった場合のみ、rejectでレスポンスを返却可能 - 400&#x2F;500系のエラーはresponse.okを直接確認する必要がある&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;希望&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;データを直接送信する- 要求を途中でキャンセル／タイムアウト設定などの機能がある- 400&#x2F;500系のエラーが発生した場合、rejectでレスポンスをキャッチできる- プロジェクトの上位にインポートする必要がある&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;データ伝送&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;**response **: オブジェクトとして渡す- &lt;strong&gt;fetch&lt;&#x2F;strong&gt;: JSON, stringify() でシリアライズして渡す&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;正常なリクエスト／レスポンスチェック&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;**response **: statusが200かどうか、statusTextを通じて確認- &lt;strong&gt;fetch&lt;&#x2F;strong&gt;: オブジェクトがokプロパティを含むかどうか確認&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h6 id=&quot;ying-da-wode-rufang-fa&quot;&gt;応答を得る方法&lt;&#x2F;h6&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;response&lt;&#x2F;strong&gt;: responseオブジェクトのdataプロパティにアクセスして取得- &lt;strong&gt;fetch&lt;&#x2F;strong&gt;: responseオブジェクトにjson()メソッドを呼び出し、jsonオブジェクトを取得する&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h4 id=&quot;yue-shu&quot;&gt;約束&lt;&#x2F;h4&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Reactで非同期処理に活用されるオブジェクトであり、ウェブサービスにおけるデータ通信の目的で使用される&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;Promiseは3つの状態を持つ&lt;&#x2F;p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Pending(待機)&lt;&#x2F;strong&gt; - 初期状態であり、履行または拒否されていない状態 - オブジェクトを生成した際の状態で、**resolve(実行)&lt;strong&gt;と&lt;&#x2F;strong&gt;reject(失敗)**を引数として持つ&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;Fulfilled(履行)&lt;&#x2F;strong&gt; - 非同期ロジック処理が完了した状態で、Promiseの&lt;strong&gt;結果値を返却&lt;&#x2F;strong&gt;した状態3. &lt;strong&gt;Rejected(失敗)&lt;&#x2F;strong&gt; - 非同期ロジック処理の&lt;strong&gt;失敗&lt;&#x2F;strong&gt;または&lt;strong&gt;エラー&lt;&#x2F;strong&gt;状態&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;ES7からはasync&#x2F;awaitを利用して非同期コードを同期コードのように記述可能&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Promiseを使用すると、then()を利用して別のPromiseを呼び出すことで長さが伸びる&lt;&#x2F;p&gt;
+&lt;p&gt;これはAsync&#x2F;Awaitを利用して解決可能である&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h3 id=&quot;shi-yong-fang-fa&quot;&gt;使用方法&lt;&#x2F;h3&gt;
+&lt;p&gt;Ajax&lt;&#x2F;p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #E1E4E8; background-color: #24292E;&quot;&gt;&lt;code data-lang=&quot;plain&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;- url: 要求するURL- type: 実行するメソッド(GET, POST, PUT, DELETE)- async: デフォルト値はtrue。falseに設定すると同期通信で実行される- data: 渡すパラメータ- dataType: サーバーから返すデータ形式(xml, html, json...)&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;#### アクシオス&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;##### 要求&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;**基本構造**&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;react axios({ url: &amp;#39;アドレス&amp;#39;, method: &amp;#39;&amp;#39;, data: { &#x2F;&#x2F;送信するデータ } })&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;##### url&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;- 送付先住所&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;##### メソッド&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;- GET、POST、DELETE、PUTなどを使用可能&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;##### データ&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;- bodyに送信するデータとして、リクエスト方式がPUT、POST、PATCHの場合に使用する&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;##### 応答&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;- 応答を受け取った場合は、**.then**を利用して処理が可能である&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;###### プロパティ&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;- **data**: サーバーが提供したレスポンス - **status**: サーバーのHTTPステータスコード - **statusText**: サーバーレスポンスからのHTTPステータスメッセージ - **headers**: &amp;#39;headers&amp;#39; サーバーが応答したヘッダーは、すべてのヘッダー名が小文字で提供される&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;- **config**: 要求に対して &amp;#39;axios&amp;#39; に設定された構成 - **request**: 応答を生成した要求 - **ブラウザ**: XMLHttpRequest インスタンス - **Node.js**: ClientRequest インスタンス&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;###### ショートカットメソッド&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;- GET、POST、PUT、DELETEなどが存在する- **GET**: axios.get(url[, config])- **POST**: axios.post(url, data[, config])- **PUT**: axios.put(url, data[, config])- **DELETE**: axios.delete(url[, config])&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;#### 約束&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;##### 非同期&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;- 関数の前に async を付けて、通常の関数を非同期関数にできる- 使用する場合、通常の関数のように値を返さず、Fulfilled Promise を返す&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;##### 待機&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;- 約束を待つために使用される演算子で、非同期関数内部でのみ使用可能&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;~~~ [rv] = await 式; ~~~&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;- **rv** : Promiseの場合、満たされる値が返され、Promiseでない場合はその値自体が返される- **expression**: Promiseまたは待機する値&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;フェッチ&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;**基本構造**&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;react fetch(&amp;quot;Address&amp;quot;, { method: &amp;quot;&amp;quot;, &#x2F;&#x2F;オプション headers: {}, &#x2F;&#x2F;オプション body: JSON.stringify({}); }) .then() .then() .catch()&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;フェッチ():&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;- 送信先アドレス、メソッド方式、リクエスト情報などを保持している&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;- APIアドレスを受け取り、**必須**引数である - http:&#x2F;&#x2F;주소 または ドメインアドレス*with ポート番号)、エンドポイント&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;メソッド&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;- methodはデフォルト値はGETで、POST、PUT、DELETEなどを使用可能であり、省略可能である&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;ヘッダー&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;- Content-Type: &amp;quot;application&#x2F;json&amp;quot; を主に使用します&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;###### 本文&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;- GETメソッドでは使用しない- JSON.stringifyを利用してシリアライズして使用する必要がある&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;- **then()**: 受け取るデータの形式を設定するもの - 応答を受け取り、json()メソッドでパースしたjson()値を返す&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;- **then()**: 実際のデータが格納される場所 - 返されたJSON値を受け取り、任意の処理が可能&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;------&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;参考資料&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;[同期(Synchronous)と非同期(Asynchronous)の違いは何ですか？](https:&#x2F;&#x2F;won-percent.tistory.com&#x2F;150)&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;[[React] Async &amp;amp; Awaitとは？](https:&#x2F;&#x2F;narup.tistory.com&#x2F;216)&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;[AXIOSのインストール＆特徴＆文法 💯 まとめ](https:&#x2F;&#x2F;inpa.tistory.com&#x2F;entry&#x2F;AXIOS-%F0%9F%93%9A-%EC%84%A4%EC%B9%98-%EC%82%AC%EC%9A%A9)&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;[JavaScript Promiseの概念と文法をマスターする](https:&#x2F;&#x2F;inpa.tistory.com&#x2F;entry&#x2F;JS-%F0%9F%93%9A-%EB%B9%84%EB%8F%99%EA%B8%B0%EC%B2%98%EB%A6%AC-Promise)&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;[Ajax - 概念と使用方法(同期、非同期)](https:&#x2F;&#x2F;sjparkk-dev1og.tistory.com&#x2F;27)&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;[[React] axios と fetch の違い](https:&#x2F;&#x2F;velog.io&#x2F;@sunkim&#x2F;React-axios-%EC%99%80-fetch-%EC%B0%A8%EC%9D%B4%EC%A0%90)&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;[[React] Async &amp;amp; Awaitとは？](https:&#x2F;&#x2F;narup.tistory.com&#x2F;216)&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;[JavaScript fetch().then() の使い方について](https:&#x2F;&#x2F;velog.io&#x2F;@journy002&#x2F;%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8-fetch.then-%EC%82%AC%EC%9A%A9%EB%B2%95-%EC%95%8C%EC%95%84%EB%B3%B4%EA%B8%B0)&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;</content>
+        
+    </entry>
+    <entry xml:lang="ja">
+        <title>React - 例外処理</title>
+        <published>2025-07-05T00:00:00+00:00</published>
+        <updated>2025-07-05T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://BlackWerf1257.github.io/ja/React/yeoe-ceori/"/>
+        <id>https://BlackWerf1257.github.io/ja/React/yeoe-ceori/</id>
+        
+        <content type="html" xml:base="https://BlackWerf1257.github.io/ja/React/yeoe-ceori/">&lt;h2 id=&quot;li-wai-chu-li&quot;&gt;例外処理&lt;&#x2F;h2&gt;
+&lt;h3 id=&quot;li-wai-chu-li-toha&quot;&gt;例外処理とは&lt;&#x2F;h3&gt;
+&lt;ul&gt;
+&lt;li&gt;プログラムの実行中にエラーが発生した際、エラーをそのまま実行させずにエラーに対応すること&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;必要性&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;例外処理を通じて、プログラムの異常終了を防ぐことができる- プログラム開発中に問題が発生した場合、その解決に必要な時間を短縮できる&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;種類&lt;&#x2F;p&gt;
+&lt;p&gt;エラー境界&lt;&#x2F;p&gt;
+&lt;h5 id=&quot;te-zheng&quot;&gt;特徴&lt;&#x2F;h5&gt;
+&lt;ul&gt;
+&lt;li&gt;React 16から導入された新しい例外処理方式 - 宣言的にエラーを管理することを目的としている - 子コンポーネントで発生したエラーを処理できるコンポーネント - 子コンポーネントでエラーが発生した場合、親コンポーネントでエラーを記録する
+&lt;ul&gt;
+&lt;li&gt;エラー発生時、エラーが発生したコンポーネントの代わりにフォールバックUI[^1]を表示する - render&#x2F;useEffectで発生したエラーを処理可能 - イベントハンドラーやフックでは使用不可 - &lt;strong&gt;ただし&lt;&#x2F;strong&gt;、useErrorBoundaryを利用することで、Error Boundaryが処理できないエラーを渡すことが可能&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;メソッド&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;static getDerivedStateFromError()&lt;&#x2F;strong&gt;: エラーに対する応答として状態を更新し、ユーザーにエラーメッセージを表示する機能として使用される- &lt;strong&gt;componentDidCatch()&lt;&#x2F;strong&gt;: サービスに関するエラーを記録する- catch{}文と同様に動作するが、コンポーネント内でのみ機能する&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h5 id=&quot;shi-yong-bu-ke-neng-nazhuang-kuang&quot;&gt;使用不可能な状況&lt;&#x2F;h5&gt;
+&lt;ul&gt;
+&lt;li&gt;イベントハンドラー- 非同期コード- サーバーサイドレンダリング- エラー境界自体で発生するエラー&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;&lt;strong&gt;使用方法&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;react &#x2F;&#x2F;定義するサブクラスclass ErrorBoundary extends React.Component {    constructor(props) {        super(props);        this.state = {hasError: false};    }&lt;&#x2F;p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #E1E4E8; background-color: #24292E;&quot;&gt;&lt;code data-lang=&quot;plain&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;static getDerivedStateFromError(error) { &#x2F;&#x2F;次のレンダリングでフォールバックUIが表示されるよう状態を更新 return {hasError : true}; }&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;componentDidCatch(error, errorInfo){    &#x2F;&#x2F; エラー報告サービスにエラーを記録可能    logErrorToMyService(error, errorInfo);}&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;render() { &#x2F;&#x2F;フォールバックUIをカスタマイズして、レンダリング可能にする return &amp;lt;&amp;gt; フォールバックUIの構成 &amp;lt;&#x2F;&amp;gt; } }&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;&#x2F;&#x2F;メインコンポーネント&lt;ErrorBoundary&gt;&#x2F;&lt;em&gt;処理する内容&lt;&#x2F;em&gt;&#x2F;&lt;&#x2F;ErrorBoundary&gt;~~~&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;エラー境界を使用するには、上記のコードのようにサブクラスにエラー境界を定義する必要がある- その後、定義したサブクラスでラップして使用可能&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h4 id=&quot;tou-geru&quot;&gt;投げる&lt;&#x2F;h4&gt;
+&lt;ul&gt;
+&lt;li&gt;意図的に例外を発生させ、例外を処理させる役割を持つ&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;&lt;strong&gt;使用方法&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;サンプルコード&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;reactexport default function App() {  const obj = undefined;  const errorEvent = () =&amp;gt; {    try {      throw new Error(&quot;例外が発生しました！&quot;);
+} catch (error) { console.log(error); } } return( &amp;lt;&amp;gt; &lt;button onClick={errorEvent}&gt;例外処理ボタン&lt;&#x2F;button&gt; &amp;lt;&#x2F;&amp;gt; ) }&lt;&#x2F;p&gt;
+&lt;p&gt;---------------------------------------------------&#x2F;&#x2F;出力 &quot;Error: 例外が発生しました&quot;~~~&lt;&#x2F;p&gt;
+&lt;p&gt;try-catch&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;使用方法&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;react try{ &#x2F;&#x2F;実行するコード } catch(例外変数名) { &#x2F;&#x2F;例外処理コード } finally { &#x2F;&#x2F;オプション &#x2F;&#x2F;終了後に実行するコード }&lt;&#x2F;p&gt;
+&lt;h5 id=&quot;shi-su&quot;&gt;試す&lt;&#x2F;h5&gt;
+&lt;ul&gt;
+&lt;li&gt;実行するコード&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h5 id=&quot;kiyatuti&quot;&gt;キャッチ&lt;&#x2F;h5&gt;
+&lt;ul&gt;
+&lt;li&gt;tryブロックは例外が発生した場合に処理する役割を持つ- エラーの種類に応じて無視&#x2F;個別処理が可能である&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h5 id=&quot;tuini&quot;&gt;ついに&lt;&#x2F;h5&gt;
+&lt;ul&gt;
+&lt;li&gt;tryブロックが終了すると実行される部分 -tryブロックに関係なく、実行が終了すると&lt;strong&gt;必ず&lt;&#x2F;strong&gt;実行される&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;&lt;strong&gt;サンプルコード&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;reactexport default function App() {    const obj = undefined;    const errorEvent = () =&amp;gt; {        try {            console.log(obj.name)        } catch (error) {            console.log(&#x27;エラー発生 : &#x27; + error);        } finally {            console.log(&#x27;実行完了&#x27;);        }
+} } return( &amp;lt;&amp;gt; &lt;button onClick={errorEvent}&gt;例外処理ボタン&lt;&#x2F;button&gt; &amp;lt;&#x2F;&amp;gt; ) }&lt;&#x2F;p&gt;
+&lt;p&gt;&#x2F;&#x2F;出力 &quot;エラー発生 : TypeError: 未定義のプロパティを読み取れません (&#x27;name&#x27; の読み取り) &quot; &quot;実行完了&quot;&lt;&#x2F;p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #E1E4E8; background-color: #24292E;&quot;&gt;&lt;code data-lang=&quot;plain&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;##### Promiseにおけるtry-catch例外処理&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;react try {  const response = await fetch(&amp;#39;address&amp;#39;);} catch(error) {  console.log(error);}&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;- Promiseオブジェクトの場合、上記のコードのようにawaitを使用しない場合、catchで例外を処理できない&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;---&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;参考資料&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;- [エラー境界の扱い方(ErrorBoundary + react-error-boundary)](https:&#x2F;&#x2F;velog.io&#x2F;@shyunju7&#x2F;ERROR-BOUNDARY-%EB%8B%A4%EB%A3%A8%EA%B8%B0ErrorBoundary-react-error-boundary)&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;- [エラー境界(Error Boundaries)](https:&#x2F;&#x2F;ko.legacy.reactjs.org&#x2F;docs&#x2F;error-boundaries.html)&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;- [[JS&#x2F;React] 後から整理する例外処理方式の一つであるtry&#x2F;catch&#x2F;finally](https:&#x2F;&#x2F;velog.io&#x2F;@double29&#x2F;JSReact-%EB%92%A4%EB%8A%A6%EA%B2%8C-%EC%A0%95%EB%A6%AC%ED%95%98%EB%8A%94- 例外処理の基礎と応用-trycatchfinally)&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;  &amp;lt;br&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;[^1]: 補助UIとして、メインUIが動作しない場合に代替機能を提供するUIである[^2]: [Promise]({{ site.baseurl }}&#x2F;posts&#x2F;비동기와-동기화)に関する内容はリンクを参照のこと&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;</content>
+        
+    </entry>
+    <entry xml:lang="ja">
+        <title>React - グリッド</title>
+        <published>2025-06-26T00:00:00+00:00</published>
+        <updated>2025-06-26T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://BlackWerf1257.github.io/ja/React/grid/"/>
+        <id>https://BlackWerf1257.github.io/ja/React/grid/</id>
+        
+        <content type="html" xml:base="https://BlackWerf1257.github.io/ja/React/grid/">&lt;p&gt;※本ブログではMUIを利用してグリッドを実装した&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;guritudo&quot;&gt;グリッド&lt;&#x2F;h2&gt;
+&lt;h3 id=&quot;ding-yi&quot;&gt;定義&lt;&#x2F;h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Gridとは、コンポーネントを縦横方向に配置できる2次元レイアウトシステムである- MUIにおけるGridは、より高い柔軟性を実現するためCSS FlexBox&lt;sup class=&quot;footnote-reference&quot; id=&quot;fr-2-1&quot;&gt;&lt;a href=&quot;#fn-2&quot;&gt;1&lt;&#x2F;a&gt;&lt;&#x2F;sup&gt;を基盤として動作する&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h3 id=&quot;te-zheng&quot;&gt;特徴&lt;&#x2F;h3&gt;
+&lt;ul&gt;
+&lt;li&gt;スマートフォン(xs)、タブレット(sm)、デスクトップ(md, lg, xl) ごとに UI 設定が可能 - 各行は12列で表示され、解像度ごとに希望の数で配置できる
+&lt;ul&gt;
+&lt;li&gt;例 xs={6} : 12&#x2F;6=2で各行ごとに2つずつデータを表示する- Flexboxベースの多様な方式での値適用や順序を逆にして表示するなど、様々な方式でのコンテンツ配置が可能&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h3 id=&quot;shi-yong-fang-fa&quot;&gt;使用方法&lt;&#x2F;h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;container&lt;&#x2F;strong&gt; プロパティを使用してグリッドコンテナを生成する- Grid Item コンポーネントは常にグリッドコンテナ内部のアイテムに存在する必要があり、&lt;strong&gt;item&lt;&#x2F;strong&gt; を明示しなければならない- アイテム間の間隔については、コンテナ内部に &lt;strong&gt;spacing={3}&lt;&#x2F;strong&gt; のように値を指定して間隔を設定できる&lt;&#x2F;li&gt;
+&lt;li&gt;グリッド内部でのアイテム配置位置などを設定するには、&lt;strong&gt;sx={{}}&lt;strong&gt;内部にコードを記述することで適用可能 - アイテムのサイズ設定は共通サイズであるsizeと、各デバイス別解像度(xs, sm, md, lg, xl)別に設定可能。サイズに&lt;&#x2F;strong&gt;flexGrow&lt;&#x2F;strong&gt;を指定した場合、自動的にサイズが割り当てられる&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h4 id=&quot;sanpurukodo&quot;&gt;サンプルコード&lt;&#x2F;h4&gt;
+&lt;p&gt;react &lt;Grid container&gt; &lt;Grid item xs={6}&gt; &lt;Typography&gt;Hello&lt;&#x2F;Typography&gt; &lt;&#x2F;Grid&gt; &lt;&#x2F;Grid&gt;&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;このコードにおいてxsはアイテムの長さを意味する&lt;&#x2F;p&gt;
+&lt;p&gt;1行はデフォルトで12のサイズを持ち、アイテムのsizeが6の場合、12&#x2F;6=2でコンテナの半分のサイズを持つことになる&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;この一行のサイズは、**columns={10}**のように親グリッドコンテナでサイズ設定が可能である&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;xs、sm、md、lg、xlの&lt;a rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;mui.com&#x2F;material-ui&#x2F;customization&#x2F;breakpoints&#x2F;#default-breakpoints&quot;&gt;各種解像度別&lt;&#x2F;a&gt;サイズ設定が可能&lt;br&gt;​&lt;br&gt;このように使用できる&lt;&#x2F;p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #E1E4E8; background-color: #24292E;&quot;&gt;&lt;code data-lang=&quot;plain&quot; data-md--3----sx=&quot;{{ justifyContent: &quot;flex-start&quot;&quot; data-react--container-maxwidth=&quot;&quot;md&quot;&gt; &lt;Grid container rowSpacing&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;                padding: &amp;quot;20px&amp;quot;, display: &amp;quot;flex&amp;quot;, &#x2F;&#x2F; デフォルト値 flexWrap: &amp;quot;wrap&amp;quot;, &#x2F;&#x2F; 改行許可 }}&amp;gt; {tempData.map((item) =&amp;gt; ( &amp;lt;Grid item key={item.id}&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;                    xs={6} sm={4} md={3} &amp;gt; &amp;lt;Box sx={{ border: &amp;#39;1px solid #ddd&amp;#39;, borderRadius: &amp;#39;4px&amp;#39;, padding: &amp;#39;20px&amp;#39;, textAlign: &amp;#39;center&amp;#39;, height: &amp;#39;100px&amp;#39;,&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;                        display: &amp;#39;flex&amp;#39;, flexDirection: &amp;#39;column&amp;#39;, justifyContent: &amp;#39;center&amp;#39;, alignItems: &amp;#39;center&amp;#39;, width: &amp;#39;100px&amp;#39;, wordBreak: &amp;#39;break-word&amp;#39;, &#x2F;&#x2F;テキストがはみ出した時に自動改行&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;                        overflow: &amp;#39;hidden&amp;#39;, }} onClick={() =&amp;gt; alert(`실행됨 ${item.id}`)}&amp;gt; &amp;lt;Typography variant=&amp;quot;h6&amp;quot;&amp;gt;{item.title}&amp;lt;&#x2F;Typography&amp;gt; &amp;lt;Typography variant=&amp;quot;body2&amp;quot;&amp;gt;{item.content}&amp;lt;&#x2F;Typography&amp;gt; &amp;lt;&#x2F;Box&amp;gt; &amp;lt;&#x2F;Grid&amp;gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;            ))} &amp;lt;&#x2F;Grid&amp;gt; &amp;lt;&#x2F;Container&amp;gt; ~~~ ![Image Alt 텍스트]({{link}}&#x2F;assets&#x2F;img&#x2F;React&#x2F;Grid&#x2F;grid_test.png )&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;&#x2F;p&gt;
+&lt;hr &#x2F;&gt;
+&lt;p&gt;参考資料&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;a rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;www.yes24.com&#x2F;Product&#x2F;Goods&#x2F;119973506&quot;&gt;実践！Spring BootとReactで始めるモダンWebアプリケーション開発&lt;&#x2F;a&gt;&lt;sup class=&quot;footnote-reference&quot; id=&quot;fr-1-1&quot;&gt;&lt;a href=&quot;#fn-1&quot;&gt;2&lt;&#x2F;a&gt;&lt;&#x2F;sup&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;a rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;mui.com&#x2F;material-ui&#x2F;react-grid&#x2F;&quot;&gt;グリッド&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;a rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;studiomeal.com&#x2F;archives&#x2F;533&quot;&gt;今度こそCSS Gridをマスターしよう&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;[&lt;a rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;cocoon1787.tistory.com&#x2F;820&quot;&gt;React] Reactで1行に4つずつ表示する（特定の数表示後に改行、display:grid使用）&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;&#x2F;p&gt;
+&lt;section class=&quot;footnotes&quot;&gt;
+&lt;ol class=&quot;footnotes-list&quot;&gt;
+&lt;li id=&quot;fn-2&quot;&gt;
+&lt;p&gt;レイアウト配置用に開発され、横軸または縦軸でアイテムを配置するレイアウトである &lt;a href=&quot;#fr-2-1&quot;&gt;↩&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li id=&quot;fn-1&quot;&gt;
+&lt;p&gt;ジュハ・ヒンクーラ, 『実践！Spring BootとReactで始めるモダンWebアプリケーション開発』, ウィキブックス, 2023, 171p &lt;a href=&quot;#fr-1-1&quot;&gt;↩&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;&#x2F;section&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="ja">
+        <title>Web Storage API</title>
+        <published>2025-05-28T00:00:00+00:00</published>
+        <updated>2025-05-28T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://BlackWerf1257.github.io/ja/React/web-storage-api/"/>
+        <id>https://BlackWerf1257.github.io/ja/React/web-storage-api/</id>
+        
+        <content type="html" xml:base="https://BlackWerf1257.github.io/ja/React/web-storage-api/">&lt;h2 id=&quot;web-storage-api&quot;&gt;Web Storage API&lt;&#x2F;h2&gt;
+&lt;h3 id=&quot;ding-yi&quot;&gt;定義&lt;&#x2F;h3&gt;
+&lt;ul&gt;
+&lt;li&gt;ウェブのデータをクライアントに保存できるデータ構造- SessionStorageとLocalStorageの2種類が存在する- &lt;strong&gt;キー&#x2F;値&lt;&#x2F;strong&gt;のペアでデータを保存し、キーに基づいてデータを参照するデータ構造&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;br&gt;
+&lt;p&gt;種類&lt;&#x2F;p&gt;
+&lt;h4 id=&quot;setusiyonsutorezi&quot;&gt;セッションストレージ&lt;&#x2F;h4&gt;
+&lt;ul&gt;
+&lt;li&gt;ブラウザが維持されている間、データを保持するデータ構造- ブラウザを新しく開く場合、データが削除される&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h4 id=&quot;rokarusutorezi&quot;&gt;ローカルストレージ&lt;&#x2F;h4&gt;
+&lt;ul&gt;
+&lt;li&gt;sessionStorageと同様だが、ブラウザを再起動してもデータが保持されるデータ構造- 有効期限の制限なく保存が可能であり、キャッシュやローカルストレージデータを消去しなければ削除されない&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;br&gt;
+&lt;h3 id=&quot;shi-yong-fang-fa&quot;&gt;使用方法&lt;&#x2F;h3&gt;
+&lt;p&gt;react &#x2F;&#x2F;データの保存sessionStorage.setItem(&quot;キーの名前&quot;, データ);localStorage.setItem(&quot;キーの名前&quot;, データ);&lt;&#x2F;p&gt;
+&lt;p&gt;&#x2F;&#x2F;例sessionStorage.setItem(&quot;SboolLogged&quot;, isLogged);localStorage.setItem(&quot;SboolLogged&quot;, isLogged);&lt;&#x2F;p&gt;
+&lt;p&gt;&#x2F;&#x2F;データの取得sessionStorage.getItem(&quot;キーの名前&quot;);localStorage.getItem(&quot;キーの名前&quot;);&lt;&#x2F;p&gt;
+&lt;p&gt;&#x2F;&#x2F;例sessionStorage.getItem(&quot;SboolLogged&quot;);localStorage.getItem(&quot;SboolLogged&quot;);&lt;&#x2F;p&gt;
+&lt;p&gt;&#x2F;&#x2F;データの削除sessionStorage.removeItem(&#x27;キーの名前&#x27;);localStorage.removeItem(&#x27;キーの名前&#x27;);&lt;&#x2F;p&gt;
+&lt;p&gt;&#x2F;&#x2F;例sessionStorage.removeItem(&#x27;キーの名前&#x27;);localStorage.removeItem(&#x27;キーの名前&#x27;);&lt;&#x2F;p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #E1E4E8; background-color: #24292E;&quot;&gt;&lt;code data-lang=&quot;plain&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;---&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;**参考資料**&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;[[React] LocalStorage データ保存方法](https:&#x2F;&#x2F;velog.io&#x2F;@jay_be&#x2F;React-LocalStorage-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%A0%80%EC%9E%A5%ED%95%98%EA%B8%B0)&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;</content>
+        
+    </entry>
+    <entry xml:lang="ja">
+        <title>React - フック</title>
+        <published>2025-01-12T00:00:00+00:00</published>
+        <updated>2025-01-12T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://BlackWerf1257.github.io/ja/React/hukeu/"/>
+        <id>https://BlackWerf1257.github.io/ja/React/hukeu/</id>
+        
+        <content type="html" xml:base="https://BlackWerf1257.github.io/ja/React/hukeu/">&lt;p&gt;フック&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;ding-yi&quot;&gt;定義&lt;&#x2F;h3&gt;
+&lt;ul&gt;
+&lt;li&gt;プロップを受け取り、React要素を返すJavaScript関数&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h4 id=&quot;zhu-yi&quot;&gt;注意&lt;&#x2F;h4&gt;
+&lt;ul&gt;
+&lt;li&gt;フックは React 関数のコンポーネントの最上位で呼び出す必要がある- ループ、条件文、またはネストされた関数の内部ではフックを呼び出せない- React 関数内部でのみ呼び出しが可能である&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;br&gt;
+&lt;p&gt;種類&lt;&#x2F;p&gt;
+&lt;h4 id=&quot;usestate&quot;&gt;useState&lt;&#x2F;h4&gt;
+&lt;h5 id=&quot;ding-yi-1&quot;&gt;定義&lt;&#x2F;h5&gt;
+&lt;ul&gt;
+&lt;li&gt;コンポーネントの状態を管理するReactのフック - 必ず&lt;strong&gt;初期値&lt;&#x2F;strong&gt;を指定する必要がある&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h5 id=&quot;shi-yong-fang-fa&quot;&gt;使用方法&lt;&#x2F;h5&gt;
+&lt;p&gt;react const[現在のコンポーネント変数, 状態更新関数] = useState(初期値)&lt;&#x2F;p&gt;
+&lt;p&gt;&#x2F;&#x2F;例 const [userName, SetUserName] = useState[&#x27;&#x27;];&lt;&#x2F;p&gt;
+&lt;p&gt;&#x2F;&#x2F;値の取得&lt;p&gt;ユーザー名 : {userName}&lt;&#x2F;p&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&#x2F;&#x2F;値を変更するSetUserName(&#x27;Alpha&#x27;);~~~&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;初期値としては0、true、&#x27;&#x27;など様々な値を持つことができる- 値の変更は**状態更新関数(新しい値)**の形で変更可能である- 値を取得するには現在のコンポーネント関数を使用して可能である&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h5 id=&quot;zhu-yi-1&quot;&gt;注意&lt;&#x2F;h5&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;状態の更新は非同期で行われます&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;新しい状態の値が現在の値に依存する場合は注意が必要である&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;pre class=&quot;giallo&quot; style=&quot;color: #E1E4E8; background-color: #24292E;&quot;&gt;&lt;code data-lang=&quot;plain&quot; data-react-setcountnum--prevcount=&quot;&gt; prevCount + 1) ~~~&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;上記のコードを利用することで最新の値が使用されるようにできる- React 18以降では状態の更新が一括処理されるため、望まない場合は react-dom ライブラリの &lt;strong&gt;flushSync&lt;&#x2F;strong&gt; API を利用して一括処理を阻止できる&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;br&gt;
+&lt;p&gt;useEffect&lt;&#x2F;p&gt;
+&lt;h5 id=&quot;ding-yi-2&quot;&gt;定義&lt;&#x2F;h5&gt;
+&lt;ul&gt;
+&lt;li&gt;コンポーネントがレンダリングされるたびに特定の処理を実行するフック - fetchリクエストなどが例&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h5 id=&quot;shi-yong-fang-fa-1&quot;&gt;使用方法&lt;&#x2F;h5&gt;
+&lt;ul&gt;
+&lt;li&gt;useEffectはコールバック関数と依存関係という2つの引数を受け取る- &lt;strong&gt;コールバック&lt;&#x2F;strong&gt;関数: 補助処理のロジックを含む- &lt;strong&gt;依存関係&lt;&#x2F;strong&gt;: 依存関係を含む配列を表す引数（&lt;strong&gt;オプション&lt;&#x2F;strong&gt;）- 2番目の引数である依存関係を利用すると、レンダリングのたびにコードが実行されるのを防げる
+&lt;ul&gt;
+&lt;li&gt;2番目の引数に空の配列を渡した場合、最初のレンダリング後のみ useEffect 関数が実行される - &lt;strong&gt;例&lt;&#x2F;strong&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;react &#x2F;&#x2F;レンダリングが終了するたびに呼び出すuseEffect(()=&amp;gt; {    console.log(&quot;useEffect関数が実行されました&quot;)});&lt;&#x2F;p&gt;
+&lt;p&gt;&#x2F;&#x2F;引数値が変更されるたびに呼び出されるuseEffect(() =&amp;gt; {    console.log(&quot;useEffect関数が実行されました&quot;)}, [userName]);&lt;&#x2F;p&gt;
+&lt;p&gt;&#x2F;&#x2F;最初のレンダリング時のみ呼び出すようにするuseEffect(()=&amp;gt; {  console.log(&quot;useEffect関数が実行されました&quot;)}, []);~~~&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;補助作業の整理&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;作業が不要になった場合には、&lt;strong&gt;return&lt;&#x2F;strong&gt;値に関数を指定することで作業を停止できる - &lt;strong&gt;例&lt;&#x2F;strong&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;react useEffect(() =&amp;gt; { &#x2F;&#x2F;作業する内容 return () =&amp;gt; { &#x2F;&#x2F;作業を終了する内容 } }, [count]};&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;上記のコードは、countの値が変更された場合に処理を終了する&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;br&gt;
+&lt;h4 id=&quot;useref&quot;&gt;useRef&lt;&#x2F;h4&gt;
+&lt;h5 id=&quot;ding-yi-3&quot;&gt;定義&lt;&#x2F;h5&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;レンダリングに不要な値を参照できるフック- useRefは変更可能な単一プロパティを持つrefオブジェクトを返す- 値を変更しても再レンダリングされない- インターバルIDの保存・管理やDOMノードへのアクセスなどの役割に適している- 内部の値を変更するには、現在のプロパティを手動で変更する必要がある&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;注意&lt;&#x2F;strong&gt; - レンダリング中は ref.current を使用してはならない - 値が変更されても再レンダリングされないため、このような場合には &lt;strong&gt;state&lt;&#x2F;strong&gt; を使用する必要がある&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h5 id=&quot;shi-yong-fang-fa-2&quot;&gt;使用方法&lt;&#x2F;h5&gt;
+&lt;p&gt;react &#x2F;&#x2F;宣言 const フック名 = useRef(初期値);&lt;&#x2F;p&gt;
+&lt;p&gt;&#x2F;&#x2F;値の変更例const intervalRef = useRef(1);&lt;&#x2F;p&gt;
+&lt;p&gt;function handleRefVal() {    const intervalId = seInterval(() =&amp;gt; {        &#x2F;&#x2F;内部内容    }, 10);    intervalRef.current = intervalId;}&lt;&#x2F;p&gt;
+&lt;p&gt;&#x2F;&#x2F;インターバルのキャンセルfunction handleStopRefVal() {    const intervalId = intervalRef.current;    clearInterval(intervalId);}~~~&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;&#x2F;p&gt;
+&lt;hr &#x2F;&gt;
+&lt;p&gt;&lt;strong&gt;参考資料&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;a rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;docs.tosspayments.com&#x2F;blog&#x2F;react-use-state&quot;&gt;例で理解するReactのuseState&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;a rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;xiubindev.tistory.com&#x2F;100&quot;&gt;React Hooks : useEffect() 関数&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;a rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;velog.io&#x2F;@hjthgus777&#x2F;%EB%8B%A4%EC%8B%9C%ED%95%9C%EB%B2%88-useEffect%EB%A5%BC-%ED%8C%8C%ED%97%A4%EC%B3%90%EB%B3%B4%EC%9E%90&quot;&gt;[React] もう一度useEffectを掘り下げてみよう&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;a rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;ko.react.dev&#x2F;reference&#x2F;react&#x2F;useRef&quot;&gt;useRef&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="ja">
+        <title>React - 条件付きレンダリング</title>
+        <published>2025-01-11T00:00:00+00:00</published>
+        <updated>2025-01-11T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://BlackWerf1257.github.io/ja/React/jogeonbu-rendeoring/"/>
+        <id>https://BlackWerf1257.github.io/ja/React/jogeonbu-rendeoring/</id>
+        
+        <content type="html" xml:base="https://BlackWerf1257.github.io/ja/React/jogeonbu-rendeoring/">&lt;h2 id=&quot;tiao-jian-fu-kirendaringu&quot;&gt;条件付きレンダリング&lt;&#x2F;h2&gt;
+&lt;h3 id=&quot;ding-yi&quot;&gt;定義&lt;&#x2F;h3&gt;
+&lt;ul&gt;
+&lt;li&gt;プログラムの状態に応じてコンポーネントの一部のみをレンダリングすること- 要素の表示&#x2F;非表示や認証処理などの用途で利用可能- &lt;strong&gt;if&lt;&#x2F;strong&gt;や&lt;strong&gt;条件演算子&lt;&#x2F;strong&gt;などを利用して実装可能&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h3 id=&quot;li&quot;&gt;例&lt;&#x2F;h3&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;BlackWerf1257.github.io&#x2F;ja&#x2F;React&#x2F;jogeonbu-rendeoring&#x2F;%7B%7Blink%7D%7D&#x2F;assets&#x2F;img&#x2F;React&#x2F;Conditional_Render&#x2F;logout.png&quot; alt=&quot;画像の代替テキスト&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;ログインしていない状態&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;BlackWerf1257.github.io&#x2F;ja&#x2F;React&#x2F;jogeonbu-rendeoring&#x2F;%7B%7Blink%7D%7D&#x2F;assets&#x2F;img&#x2F;React&#x2F;Conditional_Render&#x2F;logged.png&quot; alt=&quot;画像の代替テキスト&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;ログイン状態&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;br&gt;
+&lt;p&gt;&lt;strong&gt;使用したコード&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;react {  isLogged ? (&lt;button className=&#x27;login-button-class&#x27; onClick={onLogout}&gt;ログアウト&lt;&#x2F;button&gt;) : (&lt;Link to=&quot;&#x2F;login&quot; className=&#x27;login-button-class&#x27;&gt;ログイン&lt;&#x2F;Link&gt;)}}&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;shi-yong-fang-fa&quot;&gt;使用方法&lt;&#x2F;h3&gt;
+&lt;p&gt;react &#x2F;&#x2F;if文の使用方法function LoginComp(comp){  const loggedBool = comp.isLogged;  if(loggedBool){    return( &lt;logout&#x2F;&gt; )  }  return( &lt;logout&#x2F;&gt; )}&lt;&#x2F;p&gt;
+&lt;p&gt;&#x2F;&#x2F;三項演算子の使用方法 &#x2F;&#x2F;condition ?. true : false の方式で動作function LoginComp(comp){  const loggedBool = comp.isLogged;  return(    &amp;lt;&amp;gt; {loggedBool ? &lt;logout&#x2F;&gt; : &lt;login&#x2F;&gt;}    &amp;lt;&#x2F;&amp;gt;  )}&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;三項演算子を使用する場合、return文一つだけで使用可能である&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="ja">
+        <title>React - 状態保持コンポーネントと状態非保持コンポーネント</title>
+        <published>2025-01-10T00:00:00+00:00</published>
+        <updated>2025-01-10T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://BlackWerf1257.github.io/ja/React/sangtae-bijeojang-keomponeonteu/"/>
+        <id>https://BlackWerf1257.github.io/ja/React/sangtae-bijeojang-keomponeonteu/</id>
+        
+        <content type="html" xml:base="https://BlackWerf1257.github.io/ja/React/sangtae-bijeojang-keomponeonteu/">&lt;h2 id=&quot;zhuang-tai-bao-chi-konponentotozhuang-tai-fei-bao-chi-konponento&quot;&gt;状態保持コンポーネントと状態非保持コンポーネント&lt;&#x2F;h2&gt;
+&lt;h3 id=&quot;zhuang-tai-wochi-tanaikonponento-stateless-component&quot;&gt;状態を持たないコンポーネント(Stateless Component)&lt;&#x2F;h3&gt;
+&lt;h4 id=&quot;ding-yi&quot;&gt;定義&lt;&#x2F;h4&gt;
+&lt;ul&gt;
+&lt;li&gt;プロップを受け取り、React要素を返すJavaScript関数- 内部にStateを持たず、値を記憶&#x2F;変更する必要がない&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h4 id=&quot;chang-suo&quot;&gt;長所&lt;&#x2F;h4&gt;
+&lt;ul&gt;
+&lt;li&gt;コード管理の簡便さ&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h4 id=&quot;sanpurukodo&quot;&gt;サンプルコード&lt;&#x2F;h4&gt;
+&lt;p&gt;react関数 NonSaveFunc(props) { return &lt;div&gt; こんにちは、{props.name}。&lt;&#x2F;div&gt; }&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="ja">
+        <title>プロップと状態</title>
+        <published>2025-01-06T00:00:00+00:00</published>
+        <updated>2025-01-06T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://BlackWerf1257.github.io/ja/React/react-peurobgwa-sangtae/"/>
+        <id>https://BlackWerf1257.github.io/ja/React/react-peurobgwa-sangtae/</id>
+        
+        <content type="html" xml:base="https://BlackWerf1257.github.io/ja/React/react-peurobgwa-sangtae/">&lt;h2 id=&quot;purotuputozhuang-tai&quot;&gt;プロップと状態&lt;&#x2F;h2&gt;
+&lt;h3 id=&quot;purotupu-prop&quot;&gt;プロップ(Prop)&lt;&#x2F;h3&gt;
+&lt;h4 id=&quot;ding-yi&quot;&gt;定義&lt;&#x2F;h4&gt;
+&lt;ul&gt;
+&lt;li&gt;コンポーネントへの入力 - 上位コンポーネントから下位コンポーネントへデータを渡す仕組み&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;特徴&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;コンポーネントでは値の変更ができない&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;上位コンポーネントから値を受け取る&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;サンプルコード&lt;&#x2F;p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #E1E4E8; background-color: #24292E;&quot;&gt;&lt;code data-lang=&quot;plain&quot; data-react---func2というコンポーネントに-minseo-というプロップスを渡す--func2-name=&quot;&quot;Minseo&quot; &#x2F;&gt; &#x2F;&#x2F;複数のプロップスを使用する場合、プロップスを追加で記述するだけで動作する &lt;Func3 firstName&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;関数コンポーネントにパラメータとして渡されたプロップオブジェクトを通じてプロップにアクセスできる&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;サンプルコード&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;react &#x2F;&#x2F;再利用不可function Func1(){    return &lt;h1&gt;First Output&lt;&#x2F;h1&gt;}&#x2F;&#x2F;プロップを通じてデータをコンポーネントに伝達function Func2(data) {    return &lt;h1&gt;Hello, {data.name}&lt;&#x2F;h1&gt;}&lt;&#x2F;p&gt;
+&lt;p&gt;&#x2F;&#x2F;複数のプロップの使用例 &#x2F;&#x2F;プロップを通じてデータをコンポーネントに渡す function Func3(data) { return &lt;h1&gt; Hello, {data.firstName} {data.lastName} &lt;&#x2F;h1&gt; } ~~~ コンポーネントがレンダリングされる場合&lt;br&gt;
+Func1 コンポーネントは &#x27;First Output&#x27; を&lt;br&gt; Func2 コンポーネントは &#x27;Hello, Minseo&#x27;,&lt;br&gt; Func3 コンポーネントは &#x27;Hello, Minseo Kim&#x27; というテキストを表示する&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;br&gt;
+&lt;h3 id=&quot;zhuang-tai-state&quot;&gt;状態(State)&lt;&#x2F;h3&gt;
+&lt;h4 id=&quot;ding-yi-1&quot;&gt;定義&lt;&#x2F;h4&gt;
+&lt;ul&gt;
+&lt;li&gt;コンポーネント内で更新可能な値&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h4 id=&quot;shi-yong-fang-fa&quot;&gt;使用方法&lt;&#x2F;h4&gt;
+&lt;h5 id=&quot;xuan-yan&quot;&gt;宣言&lt;&#x2F;h5&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;useState&lt;&#x2F;strong&gt; フック関数を使用して作成する- useState関数は初期値を引数として受け取り、最初の要素として名前を、2番目の引数として状態値を更新する関数を持つ配列を返す&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;react const [state, setState] = React.useState(初期値);&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;setState関数はコンポーネントの状態オブジェクトに更新を実行し、状態が変更されるとコンポーネントが再レンダリングされる- 注意）setState関数は非同期的に呼び出される- 例コード&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;react &#x2F;&#x2F;初期値が30のageという状態変数を生成する const [age, setAge] = React.useState(30);&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;ReactでuseState関数をインポートする場合、Reactを省略して直接useState関数を使用できる&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;React &#x2F;&#x2F; useState関数をインポートimport React, {useState} from &#x27;react&#x27;&lt;&#x2F;p&gt;
+&lt;p&gt;Reactを省略しても状態変数が動作するconst[age, setAge] = useState(30);&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;オブジェクトを利用して宣言も可能 - 例&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;react const [name, SetName] = useState({ firstName = &#x27;Minseo&#x27;, lastName = &#x27;Kim&#x27; });&lt;&#x2F;p&gt;
+&lt;br&gt;
+&lt;h5 id=&quot;hu-bichu-si&quot;&gt;呼び出し&lt;&#x2F;h5&gt;
+&lt;ul&gt;
+&lt;li&gt;呼び出しは簡単に**{状態オブジェクトの名前}**を使用して可能である- サンプルコード&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;react関数 GetNameComp(){    const [age, SetAge] = React.useState(30);    return &lt;div&gt; 年齢 : {age} &lt;&#x2F;div&gt;;}&lt;&#x2F;p&gt;
+&lt;h5 id=&quot;zhi-nogeng-xin&quot;&gt;値の更新&lt;&#x2F;h5&gt;
+&lt;ul&gt;
+&lt;li&gt;状態を宣言する際に使用した状態更新関数を利用して値の変更が可能である- &lt;strong&gt;更新関数(更新する値);&lt;&#x2F;strong&gt; の形で使用する- &lt;strong&gt;注意)&lt;&#x2F;strong&gt; = を使用して直接状態を更新する場合、ReactがUIを再レンダリングしないため const 関数の再代入が不可能である- 例示コード&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;react setAge(25);&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;状態が複数ある場合、useState関数を複数回呼び出すことが可能 - 例&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;react &#x2F;&#x2F;多重状態の宣言const [firstName, SetFirstName] = &quot;Minseo&quot;;const [lastName, SetlastName] = &quot;Kim&quot;;&lt;&#x2F;p&gt;
+&lt;p&gt;&#x2F;&#x2F;多重状態の呼び出しSetFirstName(&#x27;Hojun&#x27;);SetLastName(&#x27;Shin&#x27;);~~~&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;オブジェクトを用いて状態を宣言した場合、以下のように呼び出しが可能である&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;react setName({firstName: &#x27;Hojun&#x27;, lastName: &#x27;Shin&#x27;});&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;これ以外にも部分的に更新が可能である - 部分的な更新には&lt;strong&gt;スプレッド&lt;&#x2F;strong&gt;を利用する - スプレッドはES2018で導入されたオブジェクトスプレッド構文(&lt;strong&gt;...&lt;&#x2F;strong&gt;)を利用して動作する。 - 例示コード&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;react &#x2F;&#x2F;nameという状態オブジェクトをコピーし、firstNameを&#x27;Hojun&#x27;に更新するSetName({... name, firstName : &#x27;Hojun&#x27;});&lt;&#x2F;p&gt;
+&lt;h4 id=&quot;purotuputonogong-tong-dian-toxiang-wei-dian&quot;&gt;プロップとの共通点と相違点&lt;&#x2F;h4&gt;
+&lt;p&gt;共通点&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;プロップと状態は、コンポーネントをレンダリングするための入力データであり、状態が変更されると再レンダリングされる&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;違い&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;状態の値はプロップの値とは異なり、コンポーネント内で更新が可能である- プロップはコンポーネントに渡されるが、状態はコンポーネント内部で管理される&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;&#x2F;p&gt;
+&lt;hr &#x2F;&gt;
+&lt;p&gt;&lt;strong&gt;参考資料&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;a rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;ko.legacy.reactjs.org&#x2F;docs&#x2F;faq-state.html&quot;&gt;コンポーネント状態&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;a rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;www.yes24.com&#x2F;Product&#x2F;Goods&#x2F;119973506&quot;&gt;実践！Spring BootとReactで始めるモダンWebアプリケーション開発&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="ja">
+        <title>React - JSXとスタイリング</title>
+        <published>2025-01-05T00:00:00+00:00</published>
+        <updated>2025-01-05T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://BlackWerf1257.github.io/ja/React/react-jsxwa-seutailring/"/>
+        <id>https://BlackWerf1257.github.io/ja/React/react-jsxwa-seutailring/</id>
+        
+        <content type="html" xml:base="https://BlackWerf1257.github.io/ja/React/react-jsxwa-seutailring/">&lt;h2 id=&quot;jsx&quot;&gt;JSX&lt;&#x2F;h2&gt;
+&lt;h3 id=&quot;ding-yi&quot;&gt;定義&lt;&#x2F;h3&gt;
+&lt;ul&gt;
+&lt;li&gt;JavaScriptの拡張構文 - 必須ではないが、React開発をより容易にする可能性がある&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h3 id=&quot;te-zheng&quot;&gt;特徴&lt;&#x2F;h3&gt;
+&lt;ul&gt;
+&lt;li&gt;すべての値はレンダリング前にJSXでエスケープ[^1]されるため、注入攻撃の防止が可能である- JavaScript式を中括弧内に記述して使用できる- 要素に対して内部&#x2F;外部スタイリングの使用が可能である&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;--- &lt;strong&gt;参考資料&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;a rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;www.yes24.com&#x2F;Product&#x2F;Goods&#x2F;119973506&quot;&gt;実践！Spring BootとReactで始めるモダンWebアプリケーション開発&lt;&#x2F;a&gt;. &lt;br&gt; &lt;br&gt; [^1]: 特定の文字を本来の機能から一時的に外すように変換し、安全に使用すること&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+</feed>

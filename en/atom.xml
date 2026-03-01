@@ -1,0 +1,777 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <title>BlackWerf Dev Blog</title>
+    <subtitle>Archive of programming materials</subtitle>
+    <link rel="self" type="application/atom+xml" href="https://BlackWerf1257.github.io/en/atom.xml"/>
+    <link rel="alternate" type="text/html" href="https://BlackWerf1257.github.io/"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2025-07-10T00:00:00+00:00</updated>
+    <id>https://BlackWerf1257.github.io/en/atom.xml</id>
+    <entry xml:lang="en">
+        <title>React - Asynchronous and Synchronous</title>
+        <published>2025-07-10T00:00:00+00:00</published>
+        <updated>2025-07-10T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://BlackWerf1257.github.io/en/React/bidonggiwa-donggihwa/"/>
+        <id>https://BlackWerf1257.github.io/en/React/bidonggiwa-donggihwa/</id>
+        
+        <content type="html" xml:base="https://BlackWerf1257.github.io/en/React/bidonggiwa-donggihwa/">&lt;h2 id=&quot;asynchronous-and-synchronous&quot;&gt;Asynchronous and Synchronous&lt;&#x2F;h2&gt;
+&lt;h3 id=&quot;concept&quot;&gt;Concept&lt;&#x2F;h3&gt;
+&lt;h4 id=&quot;motivation&quot;&gt;Motivation&lt;&#x2F;h4&gt;
+&lt;ul&gt;
+&lt;li&gt;Communication method where the next task executes only after waiting for the previous task to complete on the server - While enabling simple code implementation, it has the drawback of performance degradation when multiple tasks run concurrently&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;Asynchronous&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;A communication method where subsequent tasks are executed without waiting for a response after sending a request&lt;br&gt; - Examples include fetching lists of items or performing download operations&lt;br&gt; - Suitable for processing multiple tasks simultaneously or in parallel&lt;br&gt; - Can improve overall task performance&lt;br&gt; - JavaScript frequently uses promises for this purpose&lt;br&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h3 id=&quot;types-of-asynchronous-operations&quot;&gt;Types of Asynchronous Operations&lt;&#x2F;h3&gt;
+&lt;p&gt;Ajax&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;A&lt;&#x2F;strong&gt;synchronous &lt;strong&gt;J&lt;&#x2F;strong&gt;avascript &lt;strong&gt;A&lt;&#x2F;strong&gt;nd &lt;strong&gt;X&lt;&#x2F;strong&gt;ML, an acronym for a technique that uses JavaScript to asynchronously fetch necessary data from the server and updates only the parts of the page that require modification. - Its primary purpose is to exchange information between the client and server without screen transitions.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h5 id=&quot;advantages&quot;&gt;Advantages&lt;&#x2F;h5&gt;
+&lt;ul&gt;
+&lt;li&gt;Enables asynchronous communication between server and client without page refresh - Improves performance in terms of speed - Requires no separate plugins - Allows interaction with the web application even during HTTP transmission&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h4 id=&quot;axios&quot;&gt;Axios&lt;&#x2F;h4&gt;
+&lt;ul&gt;
+&lt;li&gt;An HTTP-based asynchronous communication library using the Promise API for browsers and Node.js&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h5 id=&quot;features&quot;&gt;Features&lt;&#x2F;h5&gt;
+&lt;ul&gt;
+&lt;li&gt;Uses the browser&#x27;s &lt;strong&gt;XMLHttpRequest&lt;&#x2F;strong&gt; or Node.js&#x27;s &lt;strong&gt;Http API&lt;&#x2F;strong&gt; depending on the environment - Uses the Promise API - Automatically converts HTTP requests&#x2F;responses into JSON format - Allows request cancellation and timeout configuration - Offers more features than Fetch&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h5 id=&quot;comparison-with-fetch&quot;&gt;Comparison with Fetch&lt;&#x2F;h5&gt;
+&lt;h6 id=&quot;fetch&quot;&gt;Fetch&lt;&#x2F;h6&gt;
+&lt;ul&gt;
+&lt;li&gt;As it is a built-in library, it can be used without importing - Some browsers do not support it - Must return a promise and convert it to JSON - Can only pass a response as a rejection if there is a network failure or the request does not complete - For 400&#x2F;500 errors, you must directly check response.ok&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h6 id=&quot;hope&quot;&gt;Hope&lt;&#x2F;h6&gt;
+&lt;ul&gt;
+&lt;li&gt;Data is transmitted directly - Features such as canceling requests mid-process or setting timeouts are available - When 400&#x2F;500 errors occur, responses can be caught using reject - Must be imported at the top level of the project&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h6 id=&quot;data-transfer&quot;&gt;Data Transfer&lt;&#x2F;h6&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;response&lt;&#x2F;strong&gt;: Passed as an object - &lt;strong&gt;fetch&lt;&#x2F;strong&gt;: Passed after serialization with JSON.stringify()&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h6 id=&quot;normal-request-response-check&quot;&gt;Normal Request&#x2F;Response Check&lt;&#x2F;h6&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;response&lt;&#x2F;strong&gt;: Verify the status is 200 or check via statusText - &lt;strong&gt;fetch&lt;&#x2F;strong&gt;: Verify the object contains an ok property&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;How to Get a Response&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;response&lt;&#x2F;strong&gt;: Access and obtain the data property of the response object - &lt;strong&gt;fetch&lt;&#x2F;strong&gt;: Call the json() method on the response object and obtain the JSON object&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h4 id=&quot;promise&quot;&gt;Promise&lt;&#x2F;h4&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;An object used for asynchronous processing in React, employed for data communication in web services.&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;A Promise has three states&lt;&#x2F;p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Pending&lt;&#x2F;strong&gt; - The initial state, meaning it has not yet been resolved or rejected - This is the state when an object is created, holding &lt;strong&gt;resolve&lt;&#x2F;strong&gt; and &lt;strong&gt;reject&lt;&#x2F;strong&gt; as arguments&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;Fulfilled&lt;&#x2F;strong&gt; - The state where asynchronous logic processing is complete, and the Promise has &lt;strong&gt;returned its result value&lt;&#x2F;strong&gt;. 3. &lt;strong&gt;Rejected&lt;&#x2F;strong&gt; - The state of &lt;strong&gt;failure&lt;&#x2F;strong&gt; or &lt;strong&gt;error&lt;&#x2F;strong&gt; in asynchronous logic processing.&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;Starting with ES7, asynchronous code can be written like synchronous code using async&#x2F;await.&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Using promises allows you to chain additional promises using then(), increasing the length.&lt;&#x2F;p&gt;
+&lt;p&gt;This can be resolved using Async&#x2F;Await.&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h3 id=&quot;how-to-use&quot;&gt;How to Use&lt;&#x2F;h3&gt;
+&lt;p&gt;Ajax&lt;&#x2F;p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #E1E4E8; background-color: #24292E;&quot;&gt;&lt;code data-lang=&quot;plain&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;- url: The URL to request - type: The HTTP method to execute (GET, POST, PUT, DELETE) - async: Default value is true; set to false for synchronous communication - data: Parameters to transmit - dataType: The data format to return from the server (xml, html, json...)&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;#### Axios&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;##### Request&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;**Basic Structure**&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;react axios({   url: &amp;#39;address&amp;#39;,   method: &amp;#39;&amp;#39;,   data: {     &#x2F;&#x2F; data to send   } })&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;##### url &lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;- Shipping Address&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;##### method&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;- Supports GET, POST, DELETE, PUT, etc.&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;##### data&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;- Data to be sent in the body; used when the request method is PUT, POST, or PATCH&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;##### Response&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;- When receiving a response, processing is possible using **.then**.&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;###### Property&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;- **data**: The response provided by the server - **status**: The HTTP status code from the server - **statusText**: The HTTP status message from the server response - **headers**: The headers returned by the server, with all header names provided in lowercase&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;- **config**: The configuration set for the request in &amp;#39;axios&amp;#39; - **request**: The request that generated the response - **browser**: An XMLHttpRequest instance - **Node.js**: A ClientRequest instance&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;###### Shorthand Methods&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;- GET, POST, PUT, DELETE 등이 존재한다 - **GET**: axios.get(url[, config]) - **POST**: axios.post(url, data[, config]) - **PUT**: axios.put(url, data[, config]) - **DELETE**: axios.delete(url[, config])&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;#### Promise&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;##### Async&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;- You can convert a regular function into an async function by placing `async` before it. - When used, it does not return a value like a regular function; instead, it returns a fulfilled Promise.&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;##### Await&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;- An operator used to await a promise, usable only within async functions&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;~~~ [rv] = await Expression; ~~~&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;- **rv**: If it&amp;#39;s a Promise, the resolved value is returned; if it&amp;#39;s not a Promise, the value itself is returned. - **expression**: A Promise or a value to wait for.&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;#### Fetch&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;**Basic Structure**&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;~~~react fetch(&amp;quot;Address&amp;quot;, { method: &amp;quot;&amp;quot;, &#x2F;&#x2F;선택 headers: {}, &#x2F;&#x2F;선택 body: JSON.stringify({}); }) .then() .then() .catch() ~~~&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;##### fetch(): &lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;- Contains the destination address, method, request information, etc.&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;- Receives the API address, which is a **required** parameter - http:&#x2F;&#x2F;주소 or domain address*with port number), endpoint&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;###### method&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;- The method defaults to GET, but POST, PUT, DELETE, etc. can be used and is optional.&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;###### headers&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;- Content-Type: &amp;quot;application&#x2F;json&amp;quot; is primarily used&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;###### body&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;- Not used in GET methods - Must be serialized using JSON.stringify before use&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;- **then()**: Sets the data format to receive - Receives the response, parses it using the json() method, and returns the resulting JSON value.&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;- **then()**: Where the actual data is stored - Receives the returned JSON value and allows processing as desired&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;------&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;References&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;[What is the difference between synchronous and asynchronous?](https:&#x2F;&#x2F;won-percent.tistory.com&#x2F;150)&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;[[React] Async &amp;amp; Await란?](https:&#x2F;&#x2F;narup.tistory.com&#x2F;216)&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;[AXIOS Installation &amp;amp; Features &amp;amp; Syntax 💯 Guide](https:&#x2F;&#x2F;inpa.tistory.com&#x2F;entry&#x2F;AXIOS-%F0%9F%93%9A-%EC%84%A4%EC%B9%98-%EC%82%AC%EC%9A%A9)&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;[Mastering JavaScript Promise Concepts &amp;amp; Syntax](https:&#x2F;&#x2F;inpa.tistory.com&#x2F;entry&#x2F;JS-%F0%9F%93%9A-%EB%B9%84%EB%8F%99%EA%B8%B0%EC%B2%98%EB%A6%AC-Promise)&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;[Ajax - Concepts and Usage (Synchronous, Asynchronous)](https:&#x2F;&#x2F;sjparkk-dev1og.tistory.com&#x2F;27)&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;[[React] axios 와 fetch 차이점](https:&#x2F;&#x2F;velog.io&#x2F;@sunkim&#x2F;React-axios-%EC%99%80-fetch-%EC%B0%A8%EC%9D%B4%EC%A0%90)&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;[[React] Async &amp;amp; Await란?](https:&#x2F;&#x2F;narup.tistory.com&#x2F;216)&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;[Learn How to Use JavaScript fetch().then](https:&#x2F;&#x2F;velog.io&#x2F;@journy002&#x2F;%Understanding JavaScript fetch().then() - fetch.then() Usage Guide-How to Use fetch.then() in JavaScript) &lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;</content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>React - Exception Handling</title>
+        <published>2025-07-05T00:00:00+00:00</published>
+        <updated>2025-07-05T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://BlackWerf1257.github.io/en/React/yeoe-ceori/"/>
+        <id>https://BlackWerf1257.github.io/en/React/yeoe-ceori/</id>
+        
+        <content type="html" xml:base="https://BlackWerf1257.github.io/en/React/yeoe-ceori/">&lt;h2 id=&quot;exception-handling&quot;&gt;Exception Handling&lt;&#x2F;h2&gt;
+&lt;h3 id=&quot;what-is-exception-handling&quot;&gt;What is exception handling?&lt;&#x2F;h3&gt;
+&lt;ul&gt;
+&lt;li&gt;When an error occurs during program execution, handling the error instead of continuing execution&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h4 id=&quot;necessity&quot;&gt;Necessity&lt;&#x2F;h4&gt;
+&lt;ul&gt;
+&lt;li&gt;Through exception handling, you can prevent abnormal program termination. - During program development, it can reduce the time needed to resolve issues when problems arise.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h3 id=&quot;types&quot;&gt;Types&lt;&#x2F;h3&gt;
+&lt;h4 id=&quot;error-boundary&quot;&gt;Error Boundary&lt;&#x2F;h4&gt;
+&lt;h5 id=&quot;features&quot;&gt;Features&lt;&#x2F;h5&gt;
+&lt;ul&gt;
+&lt;li&gt;A new exception handling mechanism introduced starting with React 16 - Designed for declarative error management - A component that can handle errors originating from child components - When an error occurs in a child component, the parent component logs the error
+&lt;ul&gt;
+&lt;li&gt;When an error occurs, displays a Fallback UI[^1] instead of the component where the error originated - Can handle errors occurring in render&#x2F;useEffect - Cannot be used in event handlers or Hooks - &lt;strong&gt;However&lt;&#x2F;strong&gt;, errors that cannot be handled by an Error Boundary can be propagated using useErrorBoundary&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h5 id=&quot;method&quot;&gt;Method&lt;&#x2F;h5&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;static getDerivedStateFromError()&lt;&#x2F;strong&gt;: Used to update state in response to errors and display error messages to the user - &lt;strong&gt;componentDidCatch()&lt;&#x2F;strong&gt;: Logs errors related to services - Functions similarly to the catch{} statement but only operates within the component&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h5 id=&quot;unusable-situations&quot;&gt;Unusable situations&lt;&#x2F;h5&gt;
+&lt;ul&gt;
+&lt;li&gt;Event handlers - Asynchronous code - Server-side rendering - Errors originating from the Error Boundary itself&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;&lt;strong&gt;How to Use&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;react &#x2F;&#x2F; Subclass to define class ErrorBoundary extends React.Component {   constructor(props) {     super(props);     this.state = {       hasError: false     };   }&lt;&#x2F;p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #E1E4E8; background-color: #24292E;&quot;&gt;&lt;code data-lang=&quot;plain&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;static getDerivedStateFromError(error) { &#x2F;&#x2F; Update state to show Fallback UI on next render return {hasError: true}; }&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;componentDidCatch(error, errorInfo) {     &#x2F;&#x2F; Can log the error to the error reporting service     logErrorToMyService(error, errorInfo); }&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;render() { &#x2F;&#x2F; Customize the Fallback UI to enable rendering     return &amp;lt;&amp;gt; Fallback UI configuration &amp;lt;&#x2F;&amp;gt; } }&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;&#x2F;&#x2F;Main component &lt;ErrorBoundary&gt; &#x2F;* Handling logic *&#x2F; &lt;&#x2F;ErrorBoundary&gt; ~~~&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;To use an Error Boundary, you must define it in a subclass as shown in the code above. - Afterward, you can wrap it with the defined subclass for use.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h4 id=&quot;throw&quot;&gt;Throw&lt;&#x2F;h4&gt;
+&lt;ul&gt;
+&lt;li&gt;It intentionally throws exceptions and handles them.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;&lt;strong&gt;How to Use&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;Sample Code&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #E1E4E8; background-color: #24292E;&quot;&gt;&lt;code data-lang=&quot;plain&quot; data-react-export-default-function-app-----const-obj=&quot;undefined; const errorEvent&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;    } catch (error) { console.log(error); } } return( &amp;lt;&amp;gt; &amp;lt;button onClick={errorEvent}&amp;gt;예외 처리 버튼&amp;lt;&#x2F;button&amp;gt; &amp;lt;&#x2F;&amp;gt; ) }&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;&#x2F;&#x2F;Output &amp;quot;Error: An exception occurred&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;#### try-catch&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;**How to Use**&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;react try { &#x2F;&#x2F; Code to execute } catch (exception variable name) { &#x2F;&#x2F; Exception handling code } finally { &#x2F;&#x2F; Optional &#x2F;&#x2F; Code to execute after termination }&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;##### try&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;- Code to execute&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;##### catch&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;- The try block handles exceptions that may occur - Depending on the error type, it can be ignored or handled individually&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;##### finally&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;- The part that executes when the try block ends - Regardless of the try block, it executes **unconditionally** when execution ends&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;**Sample Code**&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;~~~react export default function App() { const obj = undefined; const errorEvent = () =&amp;gt; { try{ console.log(obj.name) } catch(error){ console.log(&amp;#39;오류발생 : &amp;#39; + error); } finally{ console.log(&amp;#39;수행 완료&amp;#39;);&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;    } } return( &amp;lt;&amp;gt; &amp;lt;button onClick={errorEvent}&amp;gt;예외 처리 버튼&amp;lt;&#x2F;button&amp;gt; &amp;lt;&#x2F;&amp;gt; ) }&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;--------------------------------------------------- &#x2F;&#x2F;출력 &amp;quot;오류발생 : TypeError: Cannot read properties of undefined (reading &amp;#39;name&amp;#39;)&amp;quot; &amp;quot;수행 완료&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;&lt;h5 id=&quot;try-catch-exception-handling-in-promise&quot;&gt;Try-Catch Exception Handling in Promise&lt;&#x2F;h5&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #E1E4E8; background-color: #24292E;&quot;&gt;&lt;code data-lang=&quot;plain&quot; data-react-try---const-response=&quot;await fetch(&#x27;address&#x27;); } catch(error) { console.log(error); } ~~~&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;- For promise[^2] objects, if await is not used as in the code above, exceptions cannot be handled with catch.&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;---&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;References&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;- [ERROR BOUNDARY 다루기(ErrorBoundary + react-error-boundary)](https:&#x2F;&#x2F;velog.io&#x2F;@shyunju7&#x2F;ERROR-BOUNDARY-%EB%8B%A4%EB%A3%A8%EA%B8%B0ErrorBoundary-react-error-boundary)&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;- [에러 경계(Error Boundaries)](https:&#x2F;&#x2F;ko.legacy.reactjs.org&#x2F;docs&#x2F;error-boundaries.html)&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;- [[JS&#x2F;React] Try&#x2F;Catch&#x2F;Finally: A Late-Stage Approach to Exception Handling](https:&#x2F;&#x2F;velog.io&#x2F;@double29&#x2F;JSReact-%EB%92%A4%EB%8A%A6%EA%B2%8C-%EC%A0%95%EB%A6%AC%ED%95%98%EB%8A%94- The try&#x2F;catch&#x2F;finally exception handling pattern)&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;  &amp;lt;br&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;[^1]: A secondary UI that provides alternative functionality when the main UI is unavailable. [^2]: For details on [Promise]({{ site.baseurl }}&#x2F;posts&#x2F;비동기와-동기화), please refer to the link. &lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;</content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>React - Grid</title>
+        <published>2025-06-26T00:00:00+00:00</published>
+        <updated>2025-06-26T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://BlackWerf1257.github.io/en/React/grid/"/>
+        <id>https://BlackWerf1257.github.io/en/React/grid/</id>
+        
+        <content type="html" xml:base="https://BlackWerf1257.github.io/en/React/grid/">&lt;p&gt;※This blog implements a grid using MUI.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;grid&quot;&gt;Grid&lt;&#x2F;h2&gt;
+&lt;h3 id=&quot;definition&quot;&gt;Definition&lt;&#x2F;h3&gt;
+&lt;ul&gt;
+&lt;li&gt;A grid is a two-dimensional layout system that enables the placement of components in both horizontal and vertical directions. - In MUI, the grid operates based on CSS FlexBox[^2] for greater flexibility.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h3 id=&quot;features&quot;&gt;Features&lt;&#x2F;h3&gt;
+&lt;ul&gt;
+&lt;li&gt;UI settings can be configured for smartphones (xs), tablets (sm), and desktops (md, lg, xl) - Each row displays 12 columns, and the number of columns can be adjusted per resolution
+&lt;ul&gt;
+&lt;li&gt;Example: xs={6} : 12&#x2F;6=2, displaying 2 items per row - Flexbox-based content alignment supports various methods, including applying different values or displaying items in reverse order&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h3 id=&quot;how-to-use&quot;&gt;How to Use&lt;&#x2F;h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Use the &lt;strong&gt;container&lt;&#x2F;strong&gt; prop to create a grid container - The Grid Item component must always exist as an item inside the Grid container and explicitly specify &lt;strong&gt;item&lt;&#x2F;strong&gt; - For spacing between items, add a value like &lt;strong&gt;spacing={3}&lt;&#x2F;strong&gt; inside the container to set the gap&lt;&#x2F;li&gt;
+&lt;li&gt;To position items within the grid, place code inside &lt;strong&gt;sx={{}}&lt;&#x2F;strong&gt; for application - Item size can be set using the global size property or device-specific resolutions (xs, sm, md, lg, xl). Adding &lt;strong&gt;flexGrow&lt;&#x2F;strong&gt; to the size automatically assigns the size&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h4 id=&quot;example-code&quot;&gt;Example Code&lt;&#x2F;h4&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #E1E4E8; background-color: #24292E;&quot;&gt;&lt;code data-lang=&quot;plain&quot; data-react--grid-container---grid-item-xs=&quot;{6}&gt; &lt;Typography&gt;Hello&lt;&#x2F;Typography&gt; &lt;&#x2F;Grid&gt; &lt;&#x2F;Grid&gt; ~~~&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;- In this code, xs refers to the length of the item.&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;  A line has a default size of 12. If an item&amp;#39;s size is 6, then 12&#x2F;6=2, meaning it occupies half the container&amp;#39;s size.&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;  - The size of this single line can be set within the parent grid container, such as **columns={10}**.&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;  xs, sm, md, lg, xl의 [다양한 해상도별](https:&#x2F;&#x2F;mui.com&#x2F;material-ui&#x2F;customization&#x2F;breakpoints&#x2F;#default-breakpoints) 크기 설정이 가능하다 &amp;lt;br&amp;gt; ​ &amp;lt;br&amp;gt; 이런식으로 사용이 가능하다&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;  ~~~react &amp;lt;Container maxWidth=&amp;quot;md&amp;quot;&amp;gt; &amp;lt;Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }} sx={{ justifyContent: &amp;quot;flex-start&amp;quot;, alignItems: &amp;quot;center&amp;quot;, &#x2F;&#x2F; 아이템 수직 중앙 정렬&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;                  padding: &amp;quot;20px&amp;quot;, display: &amp;quot;flex&amp;quot;, &#x2F;&#x2F; 디폴트값 flexWrap: &amp;quot;wrap&amp;quot;, &#x2F;&#x2F; 줄바꿈 허용 }}&amp;gt; {tempData.map((item) =&amp;gt; ( &amp;lt;Grid item key={item.id}&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;                      xs={6} sm={4} md={3} &amp;gt; &amp;lt;Box sx={{ border: &amp;#39;1px solid #ddd&amp;#39;, borderRadius: &amp;#39;4px&amp;#39;, padding: &amp;#39;20px&amp;#39;, textAlign: &amp;#39;center&amp;#39;, height: &amp;#39;100px&amp;#39;,&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;                          display: &amp;#39;flex&amp;#39;, flexDirection: &amp;#39;column&amp;#39;, justifyContent: &amp;#39;center&amp;#39;, alignItems: &amp;#39;center&amp;#39;, width: &amp;#39;100px&amp;#39;, wordBreak: &amp;#39;break-word&amp;#39;, &#x2F;&#x2F;텍스트가 벗어날때 자동으로 줄 바꿈&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;                          overflow: &amp;#39;hidden&amp;#39;, }} onClick={() =&amp;gt; alert(`실행됨 ${item.id}`)}&amp;gt; &amp;lt;Typography variant=&amp;quot;h6&amp;quot;&amp;gt;{item.title}&amp;lt;&#x2F;Typography&amp;gt; &amp;lt;Typography variant=&amp;quot;body2&amp;quot;&amp;gt;{item.content}&amp;lt;&#x2F;Typography&amp;gt; &amp;lt;&#x2F;Box&amp;gt; &amp;lt;&#x2F;Grid&amp;gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;              ))} &amp;lt;&#x2F;Grid&amp;gt; &amp;lt;&#x2F;Container&amp;gt; ~~~ ![Image Alt 텍스트]({{link}}&#x2F;assets&#x2F;img&#x2F;React&#x2F;Grid&#x2F;grid_test.png )&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;------&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;References&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;[Hands-On! Modern Web Application Development with Spring Boot and React](https:&#x2F;&#x2F;www.yes24.com&#x2F;Product&#x2F;Goods&#x2F;119973506)[^1]&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;[Grid](https:&#x2F;&#x2F;mui.com&#x2F;material-ui&#x2F;react-grid&#x2F;)&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;[This time, let&amp;#39;s finally learn CSS Grid](https:&#x2F;&#x2F;studiomeal.com&#x2F;archives&#x2F;533)&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;[[React\] Displaying 4 Items Per Line in React (Display a Specific Number of Items Then Break to the Next Line, Using display:grid)](https:&#x2F;&#x2F;cocoon1787.tistory.com&#x2F;820)&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;[^1]: Juha Hinkula, Hands-On! Modern Web Application Development with Spring Boot and React, Wikibooks, 2023, p. 171&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;[^2]: Developed for layout placement, this layout aligns items along either the horizontal or vertical axis. &lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;</content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Web Storage API</title>
+        <published>2025-05-28T00:00:00+00:00</published>
+        <updated>2025-05-28T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://BlackWerf1257.github.io/en/React/web-storage-api/"/>
+        <id>https://BlackWerf1257.github.io/en/React/web-storage-api/</id>
+        
+        <content type="html" xml:base="https://BlackWerf1257.github.io/en/React/web-storage-api/">&lt;h2 id=&quot;web-storage-api&quot;&gt;Web Storage API&lt;&#x2F;h2&gt;
+&lt;h3 id=&quot;definition&quot;&gt;Definition&lt;&#x2F;h3&gt;
+&lt;ul&gt;
+&lt;li&gt;A data structure that can store web data on the client - Two types exist: SessionStorage and LocalStorage - A data structure that stores data as &lt;strong&gt;key&#x2F;value&lt;&#x2F;strong&gt; pairs and retrieves data based on the key&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;br&gt;
+&lt;h3 id=&quot;types&quot;&gt;Types&lt;&#x2F;h3&gt;
+&lt;h4 id=&quot;sessionstorage&quot;&gt;SessionStorage&lt;&#x2F;h4&gt;
+&lt;ul&gt;
+&lt;li&gt;A data structure that persists data while the browser remains open - When a new browser window is opened, the data is deleted&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h4 id=&quot;localstorage&quot;&gt;LocalStorage&lt;&#x2F;h4&gt;
+&lt;ul&gt;
+&lt;li&gt;A data structure identical to sessionStorage, but persists even after the browser is reopened - Can be stored without expiration restrictions and requires clearing the cache or local storage data to delete&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;br&gt;
+&lt;h3 id=&quot;how-to-use&quot;&gt;How to Use&lt;&#x2F;h3&gt;
+&lt;p&gt;react &#x2F;&#x2F; Data storage sessionStorage.setItem(&quot;key name&quot;, data); localStorage.setItem(&quot;key name&quot;, data);&lt;&#x2F;p&gt;
+&lt;p&gt;&#x2F;&#x2F;예시 sessionStorage.setItem(&quot;SboolLogged&quot;, isLogged); localStorage.setItem(&quot;SboolLogged&quot;, isLogged);&lt;&#x2F;p&gt;
+&lt;p&gt;&#x2F;&#x2F; Retrieving data sessionStorage.getItem(&quot;key name&quot;); localStorage.getItem(&quot;key name&quot;);&lt;&#x2F;p&gt;
+&lt;p&gt;&#x2F;&#x2F;예시 sessionStorage.getItem(&quot;SboolLogged&quot;); localStorage.getItem(&quot;SboolLogged&quot;);&lt;&#x2F;p&gt;
+&lt;p&gt;&#x2F;&#x2F; Deleting data sessionStorage.removeItem(&#x27;key name&#x27;); localStorage.removeItem(&#x27;key name&#x27;);&lt;&#x2F;p&gt;
+&lt;p&gt;&#x2F;&#x2F;Example sessionStorage.removeItem(&#x27;key name&#x27;); localStorage.removeItem(&#x27;key name&#x27;);&lt;&#x2F;p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #E1E4E8; background-color: #24292E;&quot;&gt;&lt;code data-lang=&quot;plain&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;---&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;**References**&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;[[React] Storing Data in LocalStorage](https:&#x2F;&#x2F;velog.io&#x2F;@jay_be&#x2F;React-LocalStorage-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%A0%80%EC%9E%A5%ED%95%98%EA%B8%B0) &lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;</content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>React - Hooks</title>
+        <published>2025-01-12T00:00:00+00:00</published>
+        <updated>2025-01-12T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://BlackWerf1257.github.io/en/React/hukeu/"/>
+        <id>https://BlackWerf1257.github.io/en/React/hukeu/</id>
+        
+        <content type="html" xml:base="https://BlackWerf1257.github.io/en/React/hukeu/">&lt;h2 id=&quot;hook&quot;&gt;Hook&lt;&#x2F;h2&gt;
+&lt;h3 id=&quot;definition&quot;&gt;Definition&lt;&#x2F;h3&gt;
+&lt;ul&gt;
+&lt;li&gt;A JavaScript function that takes a prop as an argument and returns a React element&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h4 id=&quot;caution&quot;&gt;Caution&lt;&#x2F;h4&gt;
+&lt;ul&gt;
+&lt;li&gt;Hooks must be called at the top level of a React function component - Hooks cannot be called inside loops, conditional statements, or nested functions - Hooks can only be called within React functions&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;br&gt;
+&lt;h3 id=&quot;types&quot;&gt;Types&lt;&#x2F;h3&gt;
+&lt;h4 id=&quot;usestate&quot;&gt;useState&lt;&#x2F;h4&gt;
+&lt;h5 id=&quot;definition-1&quot;&gt;Definition&lt;&#x2F;h5&gt;
+&lt;ul&gt;
+&lt;li&gt;React hooks for managing component state - You must always specify an &lt;strong&gt;initial value&lt;&#x2F;strong&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h5 id=&quot;how-to-use&quot;&gt;How to Use&lt;&#x2F;h5&gt;
+&lt;p&gt;react const [current component variable, state update function] = useState(initial value)&lt;&#x2F;p&gt;
+&lt;p&gt;&#x2F;&#x2F;예시 const [userName, SetUserName] = useState[&#x27;&#x27;];&lt;&#x2F;p&gt;
+&lt;p&gt;&#x2F;&#x2F;Get value &lt;p&gt;User name: {userName}&lt;&#x2F;p&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&#x2F;&#x2F; Change the value SetUserName(&#x27;Alpha&#x27;);&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;Initial values can be 0, true, &#x27;&#x27; or various other values - Values can be changed using the &lt;strong&gt;state update function (new value)&lt;&#x2F;strong&gt; - Values can be retrieved using the current component function&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h5 id=&quot;caution-1&quot;&gt;Caution&lt;&#x2F;h5&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Status updates are processed asynchronously.&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Caution is required when the value of a new state depends on the current value.&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;pre class=&quot;giallo&quot; style=&quot;color: #E1E4E8; background-color: #24292E;&quot;&gt;&lt;code data-lang=&quot;plain&quot; data-react-setcountnum--prevcount=&quot;&gt; prevCount + 1) ~~~&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;Using the code above ensures the latest value is used - Starting with React 18, state updates are batch processed. If you don&#x27;t want this, you can prevent batch processing using the &lt;strong&gt;flushSync&lt;&#x2F;strong&gt; API from the react-dom library.&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;br&gt;
+&lt;h4 id=&quot;useeffect&quot;&gt;useEffect&lt;&#x2F;h4&gt;
+&lt;h5 id=&quot;definition-2&quot;&gt;Definition&lt;&#x2F;h5&gt;
+&lt;ul&gt;
+&lt;li&gt;A Hook that performs a specific task whenever a component is rendered - Examples include fetch requests, etc.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h5 id=&quot;how-to-use-1&quot;&gt;How to Use&lt;&#x2F;h5&gt;
+&lt;ul&gt;
+&lt;li&gt;useEffect accepts two arguments: a callback function and dependencies. - &lt;strong&gt;Callback&lt;&#x2F;strong&gt; function: Contains the logic for secondary tasks. - &lt;strong&gt;Dependencies&lt;&#x2F;strong&gt;: An optional argument representing an array of dependencies. - Using the second argument, dependencies, prevents the code from running every time the component renders.
+&lt;ul&gt;
+&lt;li&gt;Passing an empty array as the second argument ensures the useEffect function runs only after the first render. - &lt;strong&gt;Example&lt;&#x2F;strong&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;react &#x2F;&#x2F; Called after each render useEffect(() =&amp;gt; {   console.log(&quot;useEffect function executed&quot;) });&lt;&#x2F;p&gt;
+&lt;p&gt;&#x2F;&#x2F; Calls whenever the argument value changes useEffect(() =&amp;gt; {   console.log(&quot;useEffect function executed&quot;) }, [userName]);&lt;&#x2F;p&gt;
+&lt;p&gt;&#x2F;&#x2F; Only call during the first render useEffect(() =&amp;gt; {   console.log(&quot;useEffect function executed&quot;) }, []);&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Organization of Auxiliary Tasks&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;When no further processing is required, you can stop the operation by placing the function in the &lt;strong&gt;return&lt;&#x2F;strong&gt; value - &lt;strong&gt;Example&lt;&#x2F;strong&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;react useEffect(() =&amp;gt; {     &#x2F;&#x2F; Task to perform     return () =&amp;gt; {         &#x2F;&#x2F; Task completion logic     } }, [count]};&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;The above code terminates the operation when the value of count changes.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;br&gt;
+&lt;h4 id=&quot;useref&quot;&gt;useRef&lt;&#x2F;h4&gt;
+&lt;h5 id=&quot;definition-3&quot;&gt;Definition&lt;&#x2F;h5&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Hook that can reference values not needed for rendering - useRef returns a ref object with a single mutable property - Changing the value does not trigger re-rendering - Suitable for roles like storing and managing interval IDs or accessing DOM nodes - To change the internal value, you must manually modify the current property&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Caution&lt;&#x2F;strong&gt; - Do not use ref.current during rendering - Since it does not trigger re-rendering even when the value changes, use &lt;strong&gt;state&lt;&#x2F;strong&gt; in such cases.&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h5 id=&quot;how-to-use-2&quot;&gt;How to Use&lt;&#x2F;h5&gt;
+&lt;p&gt;react &#x2F;&#x2F; declaration const hookName = useRef(initialValue);&lt;&#x2F;p&gt;
+&lt;p&gt;&#x2F;&#x2F; Example of changing the value const intervalRef = useRef(1);&lt;&#x2F;p&gt;
+&lt;p&gt;function handleRefVal() { const intervalId = seInterval(() =&amp;gt; { &#x2F;&#x2F;내부 내용 }, 10); intervalRef.current = intervalId; }&lt;&#x2F;p&gt;
+&lt;p&gt;&#x2F;&#x2F;Interval 취소 function handleStopRefVal() { const intervalId = intervalRef.current; clearInterval(intervalId); } ~~~&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;&#x2F;p&gt;
+&lt;hr &#x2F;&gt;
+&lt;p&gt;&lt;strong&gt;References&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;a rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;docs.tosspayments.com&#x2F;blog&#x2F;react-use-state&quot;&gt;Understanding React&#x27;s useState with Examples&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;a rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;xiubindev.tistory.com&#x2F;100&quot;&gt;React Hooks : useEffect() 함수&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;a rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;velog.io&#x2F;@hjthgus777&#x2F;%EB%8B%A4%EC%8B%9C%ED%95%9C%EB%B2%88-useEffect%EB%A5%BC-%ED%8C%8C%ED%97%A4%EC%B3%90%EB%B3%B4%EC%9E%90&quot;&gt;[React] Let&#x27;s Dive Deep into useEffect Again&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;a rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;ko.react.dev&#x2F;reference&#x2F;react&#x2F;useRef&quot;&gt;useRef&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>React - Conditional Rendering</title>
+        <published>2025-01-11T00:00:00+00:00</published>
+        <updated>2025-01-11T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://BlackWerf1257.github.io/en/React/jogeonbu-rendeoring/"/>
+        <id>https://BlackWerf1257.github.io/en/React/jogeonbu-rendeoring/</id>
+        
+        <content type="html" xml:base="https://BlackWerf1257.github.io/en/React/jogeonbu-rendeoring/">&lt;h2 id=&quot;conditional-rendering&quot;&gt;Conditional Rendering&lt;&#x2F;h2&gt;
+&lt;h3 id=&quot;definition&quot;&gt;Definition&lt;&#x2F;h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Rendering only parts of a component based on the program&#x27;s state - Can be used for purposes such as showing&#x2F;hiding elements or handling authentication - Can be implemented using &lt;strong&gt;if&lt;&#x2F;strong&gt; statements or &lt;strong&gt;conditional operators&lt;&#x2F;strong&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h3 id=&quot;example&quot;&gt;Example&lt;&#x2F;h3&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;BlackWerf1257.github.io&#x2F;en&#x2F;React&#x2F;jogeonbu-rendeoring&#x2F;%7B%7Blink%7D%7D&#x2F;assets&#x2F;img&#x2F;React&#x2F;Conditional_Render&#x2F;logout.png&quot; alt=&quot;Image Alt 텍스트&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;Not logged in&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;BlackWerf1257.github.io&#x2F;en&#x2F;React&#x2F;jogeonbu-rendeoring&#x2F;%7B%7Blink%7D%7D&#x2F;assets&#x2F;img&#x2F;React&#x2F;Conditional_Render&#x2F;logged.png&quot; alt=&quot;Image Alt 텍스트&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;While logged in&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;br&gt;
+&lt;p&gt;&lt;strong&gt;Code used&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #E1E4E8; background-color: #24292E;&quot;&gt;&lt;code data-lang=&quot;plain&quot; data-react--islogged-----button-classname=&quot;&#x27;login-button-class&#x27; onClick&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;### How to Use&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;~~~react &#x2F;&#x2F;if문 사용 방식 function LoginComp(comp){ const loggedBool = comp.isLogged; if(loggedBool){ return( &amp;lt;logout&#x2F;&amp;gt; ) } return( &amp;lt;logout&#x2F;&amp;gt; ) }&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;&#x2F;&#x2F;How to use the ternary operator &#x2F;&#x2F;Operates as condition ?. true : false function LoginComp(comp) {   const loggedBool = comp.isLogged;   return(     &amp;lt;&amp;gt; {loggedBool ? &amp;lt;logout&#x2F;&amp;gt; : &amp;lt;login&#x2F;&amp;gt;}   &amp;lt;&#x2F;&amp;gt; ) }&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;- When using the ternary operator, a single return statement is sufficient. &lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;</content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>React - Stateful Components and Stateless Components</title>
+        <published>2025-01-10T00:00:00+00:00</published>
+        <updated>2025-01-10T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://BlackWerf1257.github.io/en/React/sangtae-bijeojang-keomponeonteu/"/>
+        <id>https://BlackWerf1257.github.io/en/React/sangtae-bijeojang-keomponeonteu/</id>
+        
+        <content type="html" xml:base="https://BlackWerf1257.github.io/en/React/sangtae-bijeojang-keomponeonteu/">&lt;h2 id=&quot;stateful-components-and-stateless-components&quot;&gt;Stateful Components and Stateless Components&lt;&#x2F;h2&gt;
+&lt;h3 id=&quot;stateless-component&quot;&gt;Stateless Component&lt;&#x2F;h3&gt;
+&lt;h4 id=&quot;definition&quot;&gt;Definition&lt;&#x2F;h4&gt;
+&lt;ul&gt;
+&lt;li&gt;A JavaScript function that takes props as an argument and returns a React element - It has no internal state and does not need to remember or modify values&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h4 id=&quot;advantages&quot;&gt;Advantages&lt;&#x2F;h4&gt;
+&lt;ul&gt;
+&lt;li&gt;Simplicity of code management&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h4 id=&quot;example-code&quot;&gt;Example Code&lt;&#x2F;h4&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #E1E4E8; background-color: #24292E;&quot;&gt;&lt;code data-lang=&quot;plain&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;</content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Props and State</title>
+        <published>2025-01-06T00:00:00+00:00</published>
+        <updated>2025-01-06T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://BlackWerf1257.github.io/en/React/react-peurobgwa-sangtae/"/>
+        <id>https://BlackWerf1257.github.io/en/React/react-peurobgwa-sangtae/</id>
+        
+        <content type="html" xml:base="https://BlackWerf1257.github.io/en/React/react-peurobgwa-sangtae/">&lt;h2 id=&quot;props-and-state&quot;&gt;Props and State&lt;&#x2F;h2&gt;
+&lt;h3 id=&quot;prop&quot;&gt;Prop&lt;&#x2F;h3&gt;
+&lt;h4 id=&quot;definition&quot;&gt;Definition&lt;&#x2F;h4&gt;
+&lt;ul&gt;
+&lt;li&gt;Input for components - The mechanism for passing data from parent components to child components&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h4 id=&quot;features&quot;&gt;Features&lt;&#x2F;h4&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Value changes are not possible in the component&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;Receives values from the parent component&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Example code&lt;&#x2F;p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #E1E4E8; background-color: #24292E;&quot;&gt;&lt;code data-lang=&quot;plain&quot; data-react----passing-a-prop-with-the-data--minseo--to-the-component-called-func2--func2-name=&quot;&quot;Minseo&quot; &#x2F;&gt; &#x2F;&#x2F; When using multiple props&quot; data-simply-add-the-props-to-make-it-work--func3-firstname=&quot;&quot;Minseo&quot; lastName&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;You can access props through the prop object passed as a parameter to the function component.&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;Example code&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;react &#x2F;&#x2F; Cannot be reused function Func1() {   return &lt;h1&gt;First Output&lt;&#x2F;h1&gt; } &#x2F;&#x2F; Passing data to the component via props function Func2(data) {   return &lt;h1&gt;Hello, {data.name}&lt;&#x2F;h1&gt; }&lt;&#x2F;p&gt;
+&lt;p&gt;&#x2F;&#x2F; Example of using multiple props &#x2F;&#x2F; Passing data to the component via props function Func3(data) { return &lt;h1&gt; Hello, {data.firstName} {data.lastName} &lt;&#x2F;h1&gt; } ~~~ Now when the component renders&lt;br&gt;
+The Func1 component displays &#x27;First Output&#x27;,&lt;br&gt; The Func2 component displays &#x27;Hello, Minseo&#x27;,&lt;br&gt; The Func3 component displays &#x27;Hello, Minseo Kim&#x27;.&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;br&gt;
+&lt;h3 id=&quot;state&quot;&gt;State&lt;&#x2F;h3&gt;
+&lt;h4 id=&quot;definition-1&quot;&gt;Definition&lt;&#x2F;h4&gt;
+&lt;ul&gt;
+&lt;li&gt;Values that can be updated within a component&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h4 id=&quot;how-to-use&quot;&gt;How to Use&lt;&#x2F;h4&gt;
+&lt;h5 id=&quot;declaration&quot;&gt;Declaration&lt;&#x2F;h5&gt;
+&lt;ul&gt;
+&lt;li&gt;Created using the &lt;strong&gt;useState&lt;&#x2F;strong&gt; hook function - The useState function takes an initial value as an argument and returns an array containing the name as the first element and a function for updating the state value as the second element.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #E1E4E8; background-color: #24292E;&quot;&gt;&lt;code data-lang=&quot;plain&quot; data-setstate-=&quot;React.useState(초기값); ~~~&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;- The setState function executes updates to the component&amp;#39;s state object, and if the state changes, the component is re-rendered. - Note: The setState function is called asynchronously. - Example code&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;react &#x2F;&#x2F; Creates a state variable named &amp;#39;age&amp;#39; with an initial value of 30 const [age, setAge] = React.useState(30);&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;- When importing the useState function in React, you can omit React and use the useState function directly.&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;~~~react &#x2F;&#x2F;useState 함수 가져오기 import React, {useState} from &amp;#39;react&amp;#39;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;&#x2F;&#x2F;State variable works even without React const [age, setAge] = useState(30);&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;- Declaration is also possible using objects - Example&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;~~~react const [name, SetName] = useState({ firstName = &amp;#39;Minseo&amp;#39;, lastName = &amp;#39;Kim&amp;#39; }); ~~~&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;&amp;lt;br&amp;gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;##### Call&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;- Calling is simple using **{the name of the state object}** - Example code&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;~~~react function GetNameComp(){ const [age, SetAge] = React.useState(30); return &amp;lt;div&amp;gt; Age : {age} &amp;lt;&#x2F;div&amp;gt;; } ~~~&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;##### Value Update&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;- State values can be modified using the state update function declared when setting the state - Used in the form: **updateFunction(valueToUpdate);** - **Note:** If you directly update state using `=`, React will not re-render the UI, making it impossible to reassign the const function - Example code&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;~~~react setAge(25); ~~~&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;- When there are multiple states, the useState function can be called multiple times - Example&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;react &#x2F;&#x2F; Declaration of multiple states const [firstName, SetFirstName] = &amp;quot;Minseo&amp;quot;; const [lastName, SetlastName] = &amp;quot;Kim&amp;quot;;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;&#x2F;&#x2F; Multi-state call SetFirstName(&amp;#39;Hojun&amp;#39;); SetLastName(&amp;#39;Shin&amp;#39;); ~~~&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;- When declaring state using an object, it can be called as follows:&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;~~~react setName({firstName: &amp;#39;Hojun&amp;#39;, lastName: &amp;#39;Shin&amp;#39;}); ~~~&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;- Partial updates are also possible - For partial updates, use **spread** - Spread utilizes the object spread syntax (**...**) introduced in ES2018 - Example code&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;react &#x2F;&#x2F; Copies the state object named &amp;#39;name&amp;#39; and updates firstName to &amp;#39;Hojun&amp;#39; SetName({... name, firstName : &amp;#39;Hojun&amp;#39;});&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;Common Points and Differences with Props&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;Common Points&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;- Both props and state serve as input data for rendering components; when state changes, the component re-renders.&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;Differences&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;- State values can be updated within a component, unlike props - Props are passed to a component, but state is managed internally within the component&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;---&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;**References**&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;[Component State](https:&#x2F;&#x2F;ko.legacy.reactjs.org&#x2F;docs&#x2F;faq-state.html) &lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;[Hands-On! Modern Web Application Development with Spring Boot and React](https:&#x2F;&#x2F;www.yes24.com&#x2F;Product&#x2F;Goods&#x2F;119973506). &lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;</content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>React - JSX and Styling</title>
+        <published>2025-01-05T00:00:00+00:00</published>
+        <updated>2025-01-05T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://BlackWerf1257.github.io/en/React/react-jsxwa-seutailring/"/>
+        <id>https://BlackWerf1257.github.io/en/React/react-jsxwa-seutailring/</id>
+        
+        <content type="html" xml:base="https://BlackWerf1257.github.io/en/React/react-jsxwa-seutailring/">&lt;h2 id=&quot;jsx&quot;&gt;JSX&lt;&#x2F;h2&gt;
+&lt;h3 id=&quot;definition&quot;&gt;Definition&lt;&#x2F;h3&gt;
+&lt;ul&gt;
+&lt;li&gt;JavaScript&#x27;s extended syntax - While not essential, it can make React development easier.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h3 id=&quot;features&quot;&gt;Features&lt;&#x2F;h3&gt;
+&lt;ul&gt;
+&lt;li&gt;All values are escaped in JSX before rendering, preventing injection attacks - JavaScript expressions can be used within curly braces - Both internal and external styling can be applied to elements&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;--- &lt;strong&gt;References&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;a rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;www.yes24.com&#x2F;Product&#x2F;Goods&#x2F;119973506&quot;&gt;Hands-On! Modern Web Application Development with Spring Boot and React&lt;&#x2F;a&gt;. [^1]: Converting specific characters to temporarily bypass their original functionality for safe use.&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+</feed>
