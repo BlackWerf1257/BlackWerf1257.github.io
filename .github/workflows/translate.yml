@@ -17,6 +17,9 @@ jobs:
         with:
           fetch-depth: 2
 
+      - name: Configure git
+        run: git config core.quotepath false
+
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
@@ -27,7 +30,7 @@ jobs:
 
       - name: Get changed markdown files
         run: |
-          # 변경된 파일 목록을 파일로 저장 (한글 파일명 안전하게 처리)
+          git config core.quotepath false
           git diff --name-only --diff-filter=AM HEAD~1 HEAD -- 'content/**/*.md' > /tmp/changed_files.txt
           echo "변경된 파일:"
           cat /tmp/changed_files.txt
@@ -36,7 +39,6 @@ jobs:
         env:
           DEEPL_API_KEY: ${{ secrets.DEEPL_API_KEY }}
         run: |
-          # 파일 목록을 한 줄씩 읽어서 처리 (한글 파일명 안전하게 처리)
           while IFS= read -r FILE || [ -n "$FILE" ]; do
             [ -z "$FILE" ] && continue
 
