@@ -1,0 +1,68 @@
+name: Auto Translate Posts
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "content/**/*.md"  # content 폴더의 md 파일 변경 시에만 실행
+
+jobs:
+  translate:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. 코드 체크아웃
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2  # 이전 커밋과 비교하기 위해 2개 가져옴
+
+      # 2. Python 설치
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      # 3. deepl 패키지 설치
+      - name: Install dependencies
+        run: pip install deepl
+
+      # 4. 이번 push에서 새로 추가/수정된 md 파일만 추출
+      - name: Get changed markdown files
+        id: changed_files
+        run: |
+          # 이전 커밋 대비 추가(A)되거나 수정(M)된 .md 파일 목록
+          FILES=$(git diff --name-only --diff-filter=AM HEAD~1 HEAD -- 'content/**/*.md' | tr '\n' ' ')
+          echo "files=$FILES" >> $GITHUB_OUTPUT
+          echo "변경된 파일: $FILES"
+
+      # 5. 번역 실행 (변경된 파일만)
+      - name: Translate changed files
+        if: steps.changed_files.outputs.files != ''
+        env:
+          DEEPL_API_KEY: ${{ secrets.DEEPL_API_KEY }}
+        run: |
+          for FILE in ${{ steps.changed_files.outputs.files }}; do
+            # 이미 번역된 파일(*.en.md, *.ja.md)은 건너뜀
+            if echo "$FILE" | grep -qE '\.(en|ja)\.md$'; then
+              echo "⏭ 스킵 (번역 파일): $FILE"
+              continue
+            fi
+            echo "🌐 번역 중: $FILE"
+            python translate_posts.py --api-key "$DEEPL_API_KEY" --file "$FILE" --force
+          done
+
+      # 6. 번역된 파일을 자동 commit & push
+      - name: Commit translated files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add content/
+          # 번역 파일이 실제로 추가된 경우에만 커밋
+          if git diff --staged --quiet; then
+            echo "번역된 파일 없음 - 커밋 스킵"
+          else
+            git commit -m "auto: translate new posts [skip ci]"
+            git push
+          fi
