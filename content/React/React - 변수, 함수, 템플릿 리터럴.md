@@ -1,12 +1,9 @@
-------
-
++++
 title = " React - 변수, 함수, 템플릿 리터럴"
 weight = 7
 sort_by = "weight"
-
 [extra]
-
----
++++
 
 ## 변수와 상수
 
