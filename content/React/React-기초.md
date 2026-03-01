@@ -1,5 +1,9 @@
 +++
 title = "React 기초"
+# description = "Goyo에 기여하는 방법"
+weight = 7
+sort_by = "weight"
+
 [extra]
 +++
 

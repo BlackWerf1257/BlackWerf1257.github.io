@@ -1,10 +1,10 @@
 # The URL the site will be built for
-base_url = "https://blackwerf1257.github.io"
+base_url = "https://goyo.hahwul.com"
 title = "BlackWerf's Blog"
 description = "평범한 프로그래밍 자료 아카이브 사이트입니다"
 
 build_search_index = true
-default_language = "ko-KR"
+default_language = "en"
 generate_feeds = true
 #feed_filenames = ["rss.xml"]
 generate_sitemap = true
