@@ -1,6 +1,6 @@
 +++
 title = "React基礎"
-# description = "Goyo에 기여하는 방법"
+
 weight = 7
 sort_by = "weight"
 
@@ -52,7 +52,7 @@ react //フラグメント使用function App {    return(        <React.Fragment
   2. **クラス方式** - クラスで構成する場合、**render()**メソッドが必要となる - render()メソッドはコンポーネントのレンダリング結果を表示・更新する役割を担う - 例示コード
 
   ~~~react class App extends React.Component{ render() } ~~~
-
+  
   
 
 <br/><br/><br/><br/><br/>
