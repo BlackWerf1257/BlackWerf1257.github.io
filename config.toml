@@ -1,19 +1,21 @@
-# The URL the site will be built for
-base_url = "https://goyo.hahwul.com"
-title = "BlackWerf's Blog"
-description = "평범한 프로그래밍 자료 아카이브 사이트입니다"
+# Zola 다국어 설정 - BlackWerf1257.github.io
 
-build_search_index = true
-default_language = "en"
-generate_feeds = true
-#feed_filenames = ["rss.xml"]
-generate_sitemap = true
+# 1. 기본 사이트 정보
+base_url = "https://BlackWerf1257.github.io/"
+default_language = "ko" # 접속 시 기본 언어
+theme = "goyo"
 
-# Tags for internal search only, no feed
+# 2. 전역 분류(Taxonomies) 설정
 taxonomies = [
     { name = "tags", feed = false },
     { name = "categories", paginate_by = 10, feed = true },
 ]
+
+# 3. 마크다운 및 빌드 설정
+# 특정 언어(ja)에서 인덱스 생성 에러가 날 경우, 전역에서만 관리하거나 
+# 필요시 false로 설정하여 빌드 에러를 방지합니다.
+build_search_index = true
+generate_sitemap = true
 
 [markdown]
 bottom_footnotes = true
@@ -21,75 +23,101 @@ bottom_footnotes = true
 [markdown.highlighting]
 theme = "github-dark"
 
-[languages.ko]
-generate_feeds = true
-#feed_filenames = ["rss.xml"]
-build_search_index = true
-# Tags for internal search only, no feed
-taxonomies = [
-    { name = "tags", feed = false },
-    { name = "categories", paginate_by = 10, feed = true },
-]
-
 ################### Start of Translations ###################
 
-[translations]
-# errata system
+# ---------------------------------------------------------
+# 4. 한국어 설정 (Korean)
+# ---------------------------------------------------------
+[languages.ko]
+title = "BlackWerf 개발 블로그"
+description = "React와 웹 개발 기록 아카이브"
+generate_feeds = true
+# 개별 언어의 build_search_index 설정을 제거하여 에러를 방지합니다.
+
+[languages.ko.translations]
+errata_section = "정오표 및 업데이트"
+sidebar_feeds = "피드"
+global_feed = "전체 피드"
+category_feeds = "카테고리별 피드"
+all_posts = "전체 게시글"
+copy = "복사"
+copied = "복사 완료!"
+failed_to_copy = "복사 실패"
+next = "다음"
+back_to = "돌아가기"
+previous = "이전 단계"
+edit_page = "이 페이지 수정하기"
+found_error_alert = "오류를 발견하셨나요?"
+open_issue = "GitHub에서 이슈 제기하기"
+attribution = "반영된 수정 사항에는 기여자로 표시해 드립니다."
+found_typo_alert = "오타를 발견하셨나요?"
+fork_and_pr = "Fork 후 PR을 보내주세요."
+copy_url_msg = "URL 복사"
+share_on_x = "X에 공유하기"
+toc_title = "목차"
+get_started = "시작하기"
+
+# ---------------------------------------------------------
+# 5. 영어 설정 (English)
+# ---------------------------------------------------------
+[languages.en]
+title = "BlackWerf Dev Blog"
+description = "Archive of programming materials"
+generate_feeds = true
+
+[languages.en.translations]
 errata_section = "Errata & Updates"
-# translation for feeds/ page
 sidebar_feeds = "Feeds"
 global_feed = "Global Feed"
 category_feeds = "Category Feeds"
 all_posts = "All Posts"
-# translation for copy/copied
 copy = "Copy"
 copied = "Copied!"
 failed_to_copy = "Failed to copy!"
-# Nav buttons (bottom of pages & sections)
 next = "Next"
 back_to = "Back to"
 previous = "Previous"
-# contribution (bottom of pages & sections)
 edit_page = "Edit this page"
-found_error_alert = "Found an error or it needs a clarification?"
-open_issue = "Open an issue on GitHub."
-attribution = "Substantiated corrections will be incorporated with attribution."
+found_error_alert = "Found an error?"
+open_issue = "Open an issue on GitHub"
+attribution = "Corrections will be incorporated with attribution."
 found_typo_alert = "Found a typo?"
 fork_and_pr = "Fork, modify and open a PR."
-# Share (bottom of pages & sections)
 copy_url_msg = "Copy URL"
 share_on_x = "Share on X"
-# Title of the Table of Content (ToC)
 toc_title = "ON THIS PAGE"
+get_started = "Get Started"
 
-[languages.ko.translations]
-# errata system
-errata_section = "정오표 및 업데이트"
-# translation for feeds/ page
-sidebar_feeds = "Feeds"
-global_feed = "전체 피드"
-category_feeds = "카테고리별 피드"
-all_posts = "전체 게시글"
-# translation for copy/copied
-copy = "복사"
-copied = "복사 완료!"
-failed_to_copy = "복사 실패"
-# Nav buttons (botton of pages & sections)
-next = "다음"
-back_to = "돌아가기"
-previous = "이전 단계"
-# contribution (bottom of pages & sections)
-edit_page = "이 페이지 수정하기"
-found_error_alert = "오류를 발견하셨나요? 혹은 설명이 더 필요하신가요?"
-open_issue = "GitHub에서 이슈를 제기해 주세요."
-attribution = "반영된 수정 사항에 대해서는 기여자로 성함(ID)을 남겨드립니다."
-found_typo_alert = "오타를 발견하셨나요?"
-fork_and_pr = "Fork 후 수정하여 PR을 보내주세요."
-# Share (bottom of pages & sections)
-copy_url_msg = "URL 복사"
-share_on_x = "X에 공유하기"
-# Title of the Table of Content (ToC)
-toc_title = "목차"
+# ---------------------------------------------------------
+# 6. 일본어 설정 (Japanese)
+# ---------------------------------------------------------
+[languages.ja]
+title = "BlackWerf 開発ブログ"
+description = "プログラミング資料のアーカイブ"
+generate_feeds = true
+
+[languages.ja.translations]
+errata_section = "誤植と 업데이트"
+sidebar_feeds = "フィード"
+global_feed = "全体フィード"
+category_feeds = "カテゴリ別フィード"
+all_posts = "すべての投稿"
+copy = "コピー"
+copied = "コピー 완료!"
+failed_to_copy = "コピー 실패"
+next = "次へ"
+back_to = "戻る"
+previous = "前へ"
+edit_page = "このページを編集"
+found_error_alert = "エラーを見つけましたか？"
+open_issue = "GitHubで問題を報告"
+attribution = "修正内容は寄稿者として記載されます。"
+found_typo_alert = "誤字を見つけましたか？"
+fork_and_pr = "ForkしてPRを送ってください。"
+copy_url_msg = "URLをコピー"
+share_on_x = "Xで共有"
+toc_title = "目次"
+get_started = "始めに"
 
 ################### End of Translations ###################
 
