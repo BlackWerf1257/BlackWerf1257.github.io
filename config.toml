@@ -1,7 +1,7 @@
 # The URL the site will be built for
 base_url = "https://goyo.hahwul.com"
-title = "Goyo"
-description = "Goyo is Theme"
+title = "BlackWerf's Blog"
+description = "평범한 프로그래밍 자료 아카이브 사이트입니다"
 
 build_search_index = true
 default_language = "en"
