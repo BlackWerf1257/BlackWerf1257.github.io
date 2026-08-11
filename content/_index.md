@@ -5,22 +5,19 @@ title = "Goyo"
 [extra]
 version = "v0.1.0"
 
-# Section order configuration - customize the order of landing page sections
-# Available sections: "hero", "features", "trust", "easy_command", "showcase", "social_proof", "final_cta"
-# If not specified, default order is used: hero -> features -> trust -> easy_command -> showcase -> social_proof -> final_cta
 section_order = ["hero", "features", "trust", "easy_command", "showcase", "social_proof", "final_cta"]
 
 [extra.hero]
-title = "Welcome to Goyo!"
-badge = "Clean Theme, Tranquil Feel"
+title = "Welcome to BlackWerf1257"
+badge = "따근따근한 신입 개발자"
 description = "Inspired by the Korean word \"Goyo\" (고요), meaning calm or serene, Goyo is a Zola theme that aims for simplicity and clean documentation. With Goyo, you can easily create beautiful and practical documentation pages."
 image = "/images/landing.webp"
 image_mobile = "/images/landing-mobile.webp"
 gradient_opacity = 30
 image_opacity = 25
 cta_buttons = [
-    { text = "Get Started", url = "/introduction", style = "primary" },
-    { text = "View on GitHub", url = "https://github.com/hahwul/goyo", style = "secondary" },
+    { text = "Get Started", url = "/Introduction", style = "primary" },
+    { text = "View on GitHub", url = "https://github.com/BlackWerf1257", style = "secondary" },
 ]
 
 [extra.features_section]
@@ -119,4 +116,5 @@ testimonials = [
 title = "Contributing"
 description = "Goyo is an open-source project made with ❤️. If you want to contribute to this project, please see CONTRIBUTING.md and submit a pull request with your cool content!"
 button = { text = "View Contributing Guide", url = "/contributing" }
+
 +++

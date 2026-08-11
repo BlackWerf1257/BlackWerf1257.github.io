@@ -19,7 +19,7 @@ image_mobile = "/images/landing-mobile.webp"
 gradient_opacity = 30
 image_opacity = 25
 cta_buttons = [
-    { text = "Get Started", url = "/introduction", style = "primary" },
+    { text = "Get Started", url = "/introduction/jp", style = "primary" },
     { text = "View on GitHub", url = "https://github.com/hahwul/goyo", style = "secondary" },
 ]
 
