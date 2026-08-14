@@ -31,7 +31,7 @@ icon = "circle-half-stroke"
 
 [[extra.features_section.features]]
 title = "학력"
-desc = """ * 2021:3 - 2025:2 백석대학교 첨단 IT학부 졸업 * 2026:3 - :열린사이버대 자연숲치유학과 재학중 """
+desc = """ * 2021:3 - 2025:2 백석대학교 첨단 IT학부 졸업\n * 2026:3 - :열린사이버대 자연숲치유학과 재학중 """
 
 icon = "book"
 
@@ -42,17 +42,17 @@ icon = "minimize"
 
 [[extra.features_section.features]]
 title = "수상"
-desc = "Highly customizable with a beautiful landing page."
+desc = ""
 icon = "palette"
 
 [[extra.features_section.features]]
 title = "프로젝트 경험"
-desc = "Provides a structure optimized for search engines."
+desc = ""
 icon = "magnifying-glass-chart"
 
 [[extra.features_section.features]]
 title = "기술 스택"
-desc = "Offers a variety of useful shortcodes."
+desc = ""
 icon = "code"
 
 +++
