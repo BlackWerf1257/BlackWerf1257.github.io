@@ -5,6 +5,4 @@ weight = 10
 [extra]
 
 +++
-
-**Gonna be Update soon**
-
+**To be added**

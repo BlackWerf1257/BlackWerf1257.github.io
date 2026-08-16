@@ -1,11 +1,9 @@
 +++
-title = "保有保有技術　紹介"
+title = "スキルの紹介"
 weight = 10
 
 [extra]
-
 +++
-
 # 保有技術
 
 ### フロントエンド
@@ -16,7 +14,7 @@ weight = 10
 
 ### バックエンド
 
-### フレイムワーク
+### フレームワーク
 
 - React
 - PHPMyAdmin
@@ -29,7 +27,7 @@ weight = 10
 
 ### ツール
 
-- Github
+- GitHub
 - Jira
 - Sakura Editor
 - Eclipse

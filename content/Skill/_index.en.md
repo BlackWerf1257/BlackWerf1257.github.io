@@ -1,36 +1,33 @@
 +++
-title = "Skill Introduce"
+title = "Skill Overview"
 weight = 10
 
 [extra]
-
 +++
+# Technologies We Possess
 
-# Skill
-
-### FrontEnd
+### Front End
 
 - C/C#
 - PHP
 - JavaScript
 
-### BackEnd
+### Backend
 
 ### Framework
 
 - React
 - PHPMyAdmin
-- UNITY
 
-### DATABASE
+### Database
 
 - MySQL
 - MSSQL
 - Oracle SQL
 
-### Tool
+### Tools
 
-- Github
+- GitHub
 - Jira
 - Sakura Editor
 - Eclipse
