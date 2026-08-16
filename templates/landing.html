@@ -107,20 +107,37 @@
                 </div>
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
                     {% for feature in features %}
-                        <div class="group relative">
-                            <div class="absolute inset-0 bg-gradient-to-r from-slate-500/5 to-gray-500/5 rounded-xl blur-lg group-hover:blur-xl transition-all duration-300"></div>
-                            <div class="relative feature-card rounded-xl p-8 h-full transition-all duration-300 group-hover:scale-105">
-                                {% if feature.icon %}
-                                    <div class="mb-6">
-                                        <div class="inline-flex items-center justify-center w-16 h-16 rounded-lg feature-icon-bg">
-                                            {{ icons::icon(name=feature.icon, class="text-2xl feature-icon") }}
+                        {% if feature.url %}
+                            <a href="{% if feature.url is matching('^https?://') %}{{ feature.url | safe }}{% else %}{{ get_url(path=feature.url) | safe }}{% endif %}" class="group relative block">
+                                <div class="absolute inset-0 bg-gradient-to-r from-slate-500/5 to-gray-500/5 rounded-xl blur-lg group-hover:blur-xl transition-all duration-300"></div>
+                                <div class="relative feature-card rounded-xl p-8 h-full transition-all duration-300 group-hover:scale-105">
+                                    {% if feature.icon %}
+                                        <div class="mb-6">
+                                            <div class="inline-flex items-center justify-center w-16 h-16 rounded-lg feature-icon-bg">
+                                                {{ icons::icon(name=feature.icon, class="text-2xl feature-icon") }}
+                                            </div>
                                         </div>
-                                    </div>
-                                {% endif %}
-                                <h3 class="text-2xl font-bold mb-4 feature-title">{{ feature.title }}</h3>
-                                <p class="feature-description leading-relaxed">{{ feature.desc | replace(from="\n", to="<br>") | safe }}</p>
+                                    {% endif %}
+                                    <h3 class="text-2xl font-bold mb-4 feature-title">{{ feature.title }}</h3>
+                                    <p class="feature-description leading-relaxed">{{ feature.desc | replace(from="\n", to="<br>") | safe }}</p>
+                                </div>
+                            </a>
+                        {% else %}
+                            <div class="group relative">
+                                <div class="absolute inset-0 bg-gradient-to-r from-slate-500/5 to-gray-500/5 rounded-xl blur-lg group-hover:blur-xl transition-all duration-300"></div>
+                                <div class="relative feature-card rounded-xl p-8 h-full transition-all duration-300 group-hover:scale-105">
+                                    {% if feature.icon %}
+                                        <div class="mb-6">
+                                            <div class="inline-flex items-center justify-center w-16 h-16 rounded-lg feature-icon-bg">
+                                                {{ icons::icon(name=feature.icon, class="text-2xl feature-icon") }}
+                                            </div>
+                                        </div>
+                                    {% endif %}
+                                    <h3 class="text-2xl font-bold mb-4 feature-title">{{ feature.title }}</h3>
+                                    <p class="feature-description leading-relaxed">{{ feature.desc | replace(from="\n", to="<br>") | safe }}</p>
+                                </div>
                             </div>
-                        </div>
+                        {% endif %}
                     {% endfor %}
                 </div>
             </div>

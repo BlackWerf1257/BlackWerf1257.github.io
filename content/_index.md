@@ -22,16 +22,20 @@ cta_buttons = [
 
 [extra.features_section]
 title = "간단하게 알아보기"
-description = "Clean, minimal, and focused on content"
+description = "더 자세하게 알아보기"
 
 [[extra.features_section.features]]
 title = "자기소개"
-desc = "Supports both dark and light modes."
+desc = ""
 icon = "circle-half-stroke"
 
 [[extra.features_section.features]]
 title = "학력"
-desc = """ * 2021:3 - 2025:2 백석대학교 첨단 IT학부 졸업\n * 2026:3 - :열린사이버대 자연숲치유학과 재학중 """
+desc = """ 
+
+- 2021:3 - 2025:2 백석대학교 첨단 IT학부 졸업			
+
+- 2026:3 - :열린사이버대 자연숲치유학과 재학중 """
 
 icon = "book"
 
@@ -47,12 +51,14 @@ icon = "palette"
 
 [[extra.features_section.features]]
 title = "프로젝트 경험"
-desc = ""
+desc = "여기를 눌러 이동하기"
+url = "/Project"
 icon = "magnifying-glass-chart"
 
 [[extra.features_section.features]]
 title = "기술 스택"
-desc = ""
+desc = "여기를 눌러 이동하기"
+url = "/Skill"
 icon = "code"
 
 +++
